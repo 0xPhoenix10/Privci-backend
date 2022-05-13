@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid pt-7 pb-7">
+<div class="container-fluid main-container pt-7 pb-7">
     <div class="filter-row">
         <h3 class="text-white mb-0 mr-2">Filter:</h3>
         <button class="btn d-flex justify-content-between">
