@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid pt-7 pb-7">
+<div class="container-fluid main-container pt-7 pb-7">
     <div class="text-center text-white">
         <h1 class="text-white">Search Our Database</h1>
         <h4 class="text-white">Is your email or the email of a colleague at risk?</h4>
