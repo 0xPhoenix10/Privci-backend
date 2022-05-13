@@ -21,6 +21,7 @@
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
     <!-- Bootstrap CSS -->
+    <link href="{{ asset('argon') }}/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
     <!-- <link type="text/css" href="{{ asset('argon') }}/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
 
@@ -48,6 +49,7 @@
 
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('argon') }}/js/custom.js"></script>
 
     @stack('js')

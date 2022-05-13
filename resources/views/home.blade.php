@@ -2,33 +2,33 @@
 
 @section('content')
 
-<div class="container-fluid main-container pt-7 pb-7">
+<div class="container-fluid main-container pt-7 pb-7 bg-darker">
     <div class="filter-row">
         <h3 class="text-white mb-0 mr-2">Filter:</h3>
         <button class="btn d-flex justify-content-between">
             Sort: A to Z
             <div class="d-flex flex-column ml-2">
-                <i class="fa-solid fa fa-angle-up m-0"></i> 
-                <i class="fa-solid fa fa-angle-down m-0"></i> 
+                <i class="fa-solid fa fa-angle-up m-0"></i>
+                <i class="fa-solid fa fa-angle-down m-0"></i>
             </div>
         </button>
         <button class="btn d-flex justify-content-between">
             Sort: With a breach history
             <div class="d-flex flex-column ml-2">
-                <i class="fa-solid fa fa-angle-up m-0"></i> 
-                <i class="fa-solid fa fa-angle-down m-0"></i> 
+                <i class="fa-solid fa fa-angle-up m-0"></i>
+                <i class="fa-solid fa fa-angle-down m-0"></i>
             </div>
         </button>
         <button class="btn d-flex justify-content-between">
             Sort: With the most email addresses
             <div class="d-flex flex-column ml-2">
-                <i class="fa-solid fa fa-angle-up m-0"></i> 
-                <i class="fa-solid fa fa-angle-down m-0"></i> 
+                <i class="fa-solid fa fa-angle-up m-0"></i>
+                <i class="fa-solid fa fa-angle-down m-0"></i>
             </div>
         </button>
     </div>
     <div class="main-card rounded">
-        
+
 
         <div class="card-col col-lg-2 col-md-12">
             <div class="row m-0 mb-2 align-items-center">
@@ -36,30 +36,30 @@
             </div>
             <div class="pt-3 pl-2 pb-3 pr-2 inner-card rounded justify-content-between">
                 <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="" id="" checked/>
+                    <input class="form-check-input" type="radio" name="" id="" checked />
                     <label class="form-check-label text-white" for=""> securmind.com </label>
                 </div>
                 <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="" id=""/>
+                    <input class="form-check-input" type="radio" name="" id="" />
                     <label class="form-check-label text-white" for=""> securmind.com </label>
                 </div>
                 <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="" id="" checked/>
+                    <input class="form-check-input" type="radio" name="" id="" checked />
                     <label class="form-check-label text-white" for=""> securmind.com </label>
                 </div>
                 <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="" id="" checked/>
+                    <input class="form-check-input" type="radio" name="" id="" checked />
                     <label class="form-check-label text-white" for=""> securmind.com </label>
                 </div>
                 <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="" id="" checked/>
+                    <input class="form-check-input" type="radio" name="" id="" checked />
                     <label class="form-check-label text-white" for=""> securmind.com </label>
                 </div>
                 <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="" id="" checked/>
+                    <input class="form-check-input" type="radio" name="" id="" checked />
                     <label class="form-check-label text-white" for=""> securmind.com </label>
                 </div>
-                
+
             </div>
         </div>
         <div class="card-col">
@@ -104,11 +104,15 @@
                     </div>
                     <div class="search-result-info">
                         <h4 class="m-0 p-0 text-white">Breach of Summary:</h4>
-                        <p class="col-9 m-0">In October 2015, a web hosting website known as 000webhost was alledgelly breached. And this affected over 13 million user data. This data was made up of usernames, emails, and plain text passwords.</p>
+                        <p class="col-9 m-0">In October 2015, a web hosting website known as 000webhost was alledgelly
+                            breached. And this affected over 13 million user data. This data was made up of usernames,
+                            emails, and plain text passwords.</p>
                     </div>
                     <div class="search-result-info">
                         <h4 class="m-0 text-white">Reference:</h4>
-                        <p class="col m-0">https://www/esecurityplanet.com/network-security/data-breach-at-web-host-exposes-13-million-plain-text-passwords.html</p>
+                        <p class="col m-0">
+                            https://www/esecurityplanet.com/network-security/data-breach-at-web-host-exposes-13-million-plain-text-passwords.html
+                        </p>
                     </div>
                     <div class="d-flex justify-content-end">
                         <p class="m-0 p-0 theme-color">Previous</p>
@@ -122,13 +126,20 @@
                 </div>
                 <div class="accordian-container mb-5 mt-2">
                     <button class="accordion">Does the Internet company sell the personal data of its users?</button>
-                    <p class="panel">...If you no longer want to receive marketing emails from Splunk on a go-forward back. Alternatively, you may use the "unsubscribe" feature in our email message... In our paid on-premises products, you can set your level of participation, For more ... Documentation... ...</p>
+                    <p class="panel">...If you no longer want to receive marketing emails from Splunk on a go-forward
+                        back. Alternatively, you may use the "unsubscribe" feature in our email message... In our paid
+                        on-premises products, you can set your level of participation, For more ... Documentation... ...
+                    </p>
                     <button class="accordion">Do they share personal data for marketing purposes?</button>
-                    <p class="panel">When I was growing up, I had an old neighbor named doctor Gibbs, he never yelled at us for playing in his yard, I remember him as someone who was a lot nicer than circumstances warranted.</p>
+                    <p class="panel">When I was growing up, I had an old neighbor named doctor Gibbs, he never yelled at
+                        us for playing in his yard, I remember him as someone who was a lot nicer than circumstances
+                        warranted.</p>
                     <button class="accordion">Statement(s) related to opting out found in the Privacy Policy</button>
-                    <p class="panel">When the good doctor wasn't saving lives, he was planting trees, he was from "no pain, no gain" school of horticulture. He never watered his new trees, which flew in the face of conventional wisdom, once I asked why and he said...</p>
+                    <p class="panel">When the good doctor wasn't saving lives, he was planting trees, he was from "no
+                        pain, no gain" school of horticulture. He never watered his new trees, which flew in the face of
+                        conventional wisdom, once I asked why and he said...</p>
                 </div>
-                
+
                 <div class="p-0 mb-2 d-flex justify-content-between">
                     <div class="col-8 p-0 d-flex m-0 align-items-center">
                         <h4 class="text-white mr-3">Search email:</h4>
@@ -139,65 +150,76 @@
                     </div>
                     <div class="form-check d-flex align-items-center">
                         <label class="form-check-label text-white" for=""> Select all </label>
-                        <input class="form-check-input" type="checkbox" name="" id=""/>
+                        <input class="form-check-input" type="checkbox" name="" id="" />
                     </div>
                 </div>
                 <div class="pl-3 pt-2 medium-card rounded text-white">
-                    <h4 class="mb-2 text-white">Users that may have submite or used their company email on <a class="theme-color">securmind.com</a></h4>
+                    <h4 class="mb-2 text-white">Users that may have submite or used their company email on <a
+                            class="theme-color">securmind.com</a></h4>
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="form-check">
                                 <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="form-check">
-                                <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
                                 </label>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="form-check">
                                 <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label" for="">
-                                    <input type="checkbox" class="form-check-input" id="" name="" value="something">adhere@me.com
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="">
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="">
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6">
+                            <div class="form-check">
+                                <label class="form-check-label" for="">
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="">
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="">
+                                    <input type="checkbox" class="form-check-input" id="" name=""
+                                        value="something">adhere@me.com
                                 </label>
                             </div>
                         </div>
@@ -205,7 +227,8 @@
                         </div>
                     </div>
                     <div class="row p-0 m-0 mt-3 justify-content-between">
-                        <div><span class="theme-color"> 1</span>-<span class="theme-color"> 50</span> of <span class="theme-color">245</span> records</div>
+                        <div><span class="theme-color"> 1</span>-<span class="theme-color"> 50</span> of <span
+                                class="theme-color">245</span> records</div>
                         <div class="col-2 m-0 mr-3 p-0 d-flex justify-content-between">
                             <span class="theme-color">Previous</span>
                             <span class="theme-color">Next</span>
@@ -223,10 +246,10 @@
                     <button class="btn btn-sm theme-background-color">Send a push notification</button>
                 </div>
             </div>
-            
+
         </div>
     </div>
-        
+
 </div>
 
 @include('layouts.footers.auth')
