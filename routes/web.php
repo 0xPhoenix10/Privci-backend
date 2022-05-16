@@ -29,6 +29,10 @@ Auth::routes();
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Auth::routes();
 
+Route::get('/searchemail', [App\Http\Controllers\SearchController::class, 'search_email']);
+
+Route::get('/searchdomain', [App\Http\Controllers\SearchController::class, 'search_domain']);
+
 Route::get('/search', 'App\Http\Controllers\SearchController@index')->name('search');
 
 Route::get('/account', 'App\Http\Controllers\AccountController@index')->name('account');
