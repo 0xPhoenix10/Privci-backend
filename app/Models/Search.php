@@ -14,10 +14,17 @@ class Search extends Model
                         ->where('main_organisation', 'privci.com')
                         ->orderBy('monitoring_domain', 'asc')
                         ->get()->toArray();
-        
-        // foreach($domains as $domain) {
-            
-        // }
-        return $domains;
+
+        $breachs = array();
+        foreach($domains as $domain) {
+            $result = DB::table('monitored_domain_stats')
+                            ->select('*')
+                            ->where('monitoring_domain','LIKE','%'.trim($domain->monitoring_domain).'%')
+                            ->get()->toArray();
+
+            array_push($breachs, $result);
+        }
+
+        return $breachs;
     }
 }

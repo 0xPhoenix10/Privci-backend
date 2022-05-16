@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container-fluid main-container pt-7 pb-7" style="background-color:rgb(30,31,33);">
+<div class="container-fluid main-container pt-7 pb-7 bg-darker">
     <div class="col-xl-12 mb-4">
-        <div class="card-header" style="background-color:rgb(42,43,45); border-radius:5px;">
+        <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-white">Account</h1>
             <div class="d-flex">
                 <h3 class="m-0 mr-2 text-white">Company Name: </h3>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="col-xl-12 mb-4">
-        <div class="card-header" style="background-color:rgb(42,43,45); border-radius:5px;">
+        <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-white">Tracking Company Email</h1>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="tracking-company-email" id="account_radio_1" checked>
@@ -40,7 +40,8 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input color-red" type="radio" name="tracking-company-email" id="account_radio_3">
+                <input class="form-check-input color-red" type="radio" name="tracking-company-email"
+                    id="account_radio_3">
                 <label class="form-check-label text-red" for="account_radio_3">
                     Stop tracking
                 </label>
@@ -48,12 +49,13 @@
         </div>
     </div>
     <div class="col-xl-12 mb-4">
-        <div class="card-header" style="background-color:rgb(42,43,45); border-radius:5px;">
+        <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-white">Notifications</h1>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="account_notification" name="" value="something">
                 <label class="form-check-label" for="account_notification">
-                    I want to be notified in the event where my company email address is found in a data breach in the future.
+                    I want to be notified in the event where my company email address is found in a data breach in the
+                    future.
                 </label>
             </div>
             <div class="d-flex align-items-center">
@@ -77,7 +79,7 @@
         </div>
     </div>
     <div class="col-xl-12 mb-4">
-        <div class="card-header" style="background-color:rgb(42,43,45); border-radius:5px;">
+        <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-white">Change Password</h1>
             <div class="d-flex">
                 <h3 class="m-0 mr-2 text-white">Account: </h3>
@@ -92,10 +94,9 @@
 @include('layouts.footers.auth')
 
 <style>
-.no-result-card{
+.no-result-card {
     background-color: blue;
 }
-
 </style>
 
 
