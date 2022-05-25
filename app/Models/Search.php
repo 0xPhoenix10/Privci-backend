@@ -27,4 +27,31 @@ class Search extends Model
 
         return $breachs;
     }
+
+    public static function get_all_domains() {
+        $result = DB::table('monitored_domain_stats')
+                        ->select('monitoring_domain')
+                        ->orderBy('monitoring_domain', 'asc')
+                        ->get()->toArray();
+        
+        return $result;
+    }
+
+    public static function get_domain_detail($domain) {
+        $result = DB::table('monitored_domain_stats')
+                        ->select('*')
+                        ->where('monitoring_domain', 'like', '%' . $domain . '%')
+                        ->get()->toArray();
+        
+        return $result;
+    }
+
+    public static function get_domain_emails($domain) {
+        $result = DB::table('organisation')
+                        ->select('colleague_emails')
+                        ->where('monitoring_domain', 'like', '%' . $domain . '%')
+                        ->get()->toArray();
+        
+        return $result;
+    }
 }
