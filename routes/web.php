@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
+Route::get('get_by_domain/{key}', [App\Http\Controllers\HomeController::class, 'get_by_domain']);
+
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Auth::routes();
@@ -41,6 +43,12 @@ Route::get('/support', 'App\Http\Controllers\SupportController@index')->name('su
 
 Route::get('/policy', 'App\Http\Controllers\PolicyController@index')->name('policy');
 
+Route::post('/upload_policy', [App\Http\Controllers\PolicyController::class, 'upload_policy']);
+Route::post('/edit_policy', [App\Http\Controllers\PolicyController::class, 'edit_policy']);
+Route::post('/delete_policy', [App\Http\Controllers\PolicyController::class, 'delete_policy']);
+Route::post('/add_faq', [App\Http\Controllers\PolicyController::class, 'add_faq']);
+Route::post('/edit_faq', [App\Http\Controllers\PolicyController::class, 'edit_faq']);
+Route::post('/delete_faq', [App\Http\Controllers\PolicyController::class, 'delete_faq']);
 
 
 Route::group(['middleware' => 'auth'], function () {

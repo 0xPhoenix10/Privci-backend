@@ -91,16 +91,17 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('search') }}">
-                        <i class="ni ni-tv-2 text-white"></i> <span class="text-white">{{ __('Search') }}</span>
+                        <i class="fa fa-search text-white"></i> <span class="text-white">{{ __('Search') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-planet text-white"></i> <span class="text-white">{{ __('Search') }}</span>
+                    <a class="nav-link" href="{{ route('policy') }}">
+                        <i class="ni ni-cloud-upload-96 text-white"></i> <span
+                            class="text-white">{{ __('Policy Upload') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('support') }}">
                         <i class="ni ni-chat-round text-white"></i> <span class="text-white">{{ __('Support') }}</span>
                     </a>
                 </li>
