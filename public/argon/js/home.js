@@ -1,6 +1,6 @@
-$(function () {
-    var selected_emails = [];
+var selected_emails = [];
 
+$(function () {
     // selected domain select
     $('.domain-list .form-check').each(function () {
         if ($(this).find('input[type=radio]').val() == $('#selected_domain').val()) {
@@ -16,12 +16,12 @@ $(function () {
     });
 
     $('button.accordion').on('click', function () {
-        if ($(this).find('i').hasClass('ni-bold-down')) {
-            $(this).find('i').removeClass('ni-bold-down');
-            $(this).find('i').addClass('ni-bold-up');
-        } else if ($(this).find('i').hasClass('ni-bold-up')) {
-            $(this).find('i').removeClass('ni-bold-up');
-            $(this).find('i').addClass('ni-bold-down');
+        if ($(this).find('i').hasClass('fa-caret-down')) {
+            $(this).find('i').removeClass('fa-caret-down');
+            $(this).find('i').addClass('fa-caret-right');
+        } else if ($(this).find('i').hasClass('fa-caret-right')) {
+            $(this).find('i').removeClass('fa-caret-right');
+            $(this).find('i').addClass('fa-caret-down');
         }
     });
 
@@ -160,26 +160,26 @@ $(function () {
     });
 
     $('.btn-check-email').on('click', function(){
-        $('.email-pane label.form-check-label').each(function() {
-            if ($(this).find('input').prop('checked') == true) {
-                selected_emails.push($(this).find('input').val());
-            }
-        });
+        selected_emails = [];
+        $check = email_select_check();
 
-        if(selected_emails.length == 0) {
-            swal.fire({
-                title: "Check email",
-                text: "You must select an email to use this feature",
-                type: 'warning',
-                icon: "warning",
-                dangerMode: true,
-                confirmButtonColor: "#009683",
-                confirmButtonText: 'OK'
-            });
+        if($check == 1) {
+            $("#search-email-form").submit();
         }
-
-        $("#search-email-form").submit();
     });
+
+    $('.btn-send-email').on('click', function(e) {
+        selected_emails = [];
+        e.preventDefault();
+        $check = email_select_check();
+
+        if($check == 1) {
+            var send_emails = selected_emails.join(',');
+            var mailto = "mailto:" + send_emails;
+
+            location.href = mailto;
+        }
+    })
 });
 
 function search_by_keyword(keyword, type) {
@@ -196,5 +196,29 @@ function search_by_keyword(keyword, type) {
             $('.domain-list').html(resp.html);
         }
     });
+}
+
+function email_select_check() {
+    $('.email-pane label.form-check-label').each(function() {
+        if ($(this).find('input').prop('checked') == true) {
+            selected_emails.push($(this).find('input').val());
+        }
+    });
+
+    if(selected_emails.length == 0) {
+        swal.fire({
+            title: "Check email",
+            text: "You must select an email to use this feature",
+            type: 'warning',
+            icon: "warning",
+            dangerMode: true,
+            confirmButtonColor: "#009683",
+            confirmButtonText: 'OK'
+        });
+
+        return 0;
+    }
+
+    return 1;
 }
 

@@ -42,7 +42,7 @@ class SearchController extends Controller
         } else {
             $email_list = $request->sel_email;
         }
-        
+
         $data_email_list = array();
         $data_email_list['EmailSearchAPI'] = array(
                                                 'company_domain' => 'privci.com',
