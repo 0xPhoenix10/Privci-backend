@@ -6859,14 +6859,14 @@ button.bg-danger:focus {
 }
 
 .bg-darkred {
-    background-color: #241717 !important;
+    background-color: #3c2020 !important;
 }
 
 a.bg-darkred:hover,
 a.bg-darkred:focus,
 button.bg-darkred:hover,
 button.bg-darkred:focus {
-    background-color: #241717 !important;
+    background-color: #3c2020 !important;
 }
 
 .bg-light {

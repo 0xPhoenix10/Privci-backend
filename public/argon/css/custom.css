@@ -157,7 +157,14 @@ h6 {
 
 .inner-card .accordian-container .accordion i {
     position: relative;
-    top: 3px;
+    top: 2px;
+    font-size: 20px;
+}
+
+.icon-empty {
+    top: 0px !important;
+    font-size: 14px !important;
+    color: #ffc90e !important;
 }
 
 .inner-card .accordian-container .panel {
@@ -166,7 +173,7 @@ h6 {
     border-radius: 5px;
     font-size: 16px;
     color: black;
-    background-color: white;
+    background-color: #f3f3f3;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;

@@ -64,7 +64,8 @@
                             <div class="d-flex align-items-center">
                                 <h4 class="m-0 ml-3 mr-2 theme-color">Privacy policy:</h4>
                                 <p class="m-0">
-                                    <a href="{{$domain_detail->privacy_policy}}">{{$domain_detail->privacy_policy}}</a>
+                                    <a href="{{$domain_detail->privacy_policy}}"
+                                        target="_blank">{{$domain_detail->privacy_policy}}</a>
                                 </p>
                             </div>
                         </div>
@@ -99,9 +100,9 @@
                         </div>
                         <div class="search-result-info">
                             <h4 class="m-0 text-light">Reference:</h4>
-                            <p class="col m-0">
+                            <a href="{{$first_breach_array['reference']}}" class="col m-0">
                                 {{$first_breach_array['reference']}}
-                            </p>
+                            </a>
                         </div>
                     </div>
 
@@ -125,49 +126,81 @@
                 <div class="accordian-container mb-5 mt-2">
                     <button class="accordion">Does the Internet company sell the personal data of its users?
                         @php
-                        if($domain_detail->data_sell != "") {
+                        if($domain_detail->data_sell != ""):
                         @endphp
-                        <i class="ni ni-bold-down sell-icon"></i>
+                        <i class="fa-solid fa-caret-right icon-exist"></i>
                         @php
-                        }
+                        else:
+                        @endphp
+                        <i class="fa-solid fa-triangle-exclamation icon-empty"></i>
+                        @php
+                        endif;
                         @endphp
                     </button>
                     <p class="panel">
                         @php
                         if($domain_detail->data_sell != "") {
-                        echo $domain_detail->data_sell;
+                        $str = substr($domain_detail->data_sell, 3);
+                        $string = '...<br>';
+                        $string .= $str;
+                        $string .= '<br /> ...';
+                        $string = str_replace('...,', '...', $string);
+                        $string = str_replace('<br>,', '<br>', $string);
+                        echo $string;
                         }
                         @endphp
                     </p>
                     <button class="accordion">Do they share personal data for marketing purposes?
                         @php
-                        if($domain_detail->data_share != "") {
+                        if($domain_detail->data_share != ""):
                         @endphp
-                        <i class="ni ni-bold-down share-icon"></i>
+                        <i class="fa-solid fa-caret-right icon-exist"></i>
                         @php
-                        }
+                        else:
+                        @endphp
+                        <i class="fa-solid fa-triangle-exclamation icon-empty"></i>
+                        @php
+                        endif;
                         @endphp
                     </button>
                     <p class="panel">
                         @php
                         if($domain_detail->data_share != "") {
-                        echo $domain_detail->data_share;
+                        $str = substr($domain_detail->data_share, 4);
+                        $str = substr($str, 0, -7);
+                        $string = '...';
+                        $string .= $str;
+                        $string .= '<br /> ...';
+                        $string = str_replace('...,', '...', $string);
+                        $string = str_replace('<br>,', '<br>', $string);
+                        echo $string;
                         }
                         @endphp
                     </p>
                     <button class="accordion">Statement(s) related to opting out found in the Privacy Policy
                         @php
-                        if($domain_detail->opt_out != "") {
+                        if($domain_detail->opt_out != ""):
                         @endphp
-                        <i class="ni ni-bold-down opt-icon"></i>
+                        <i class="fa-solid fa-caret-right icon-exist"></i>
                         @php
-                        }
+                        else:
+                        @endphp
+                        <i class="fa-solid fa-triangle-exclamation icon-empty"></i>
+                        @php
+                        endif;
                         @endphp
                     </button>
                     <p class="panel">
                         @php
                         if($domain_detail->opt_out != "") {
-                        echo $domain_detail->opt_out;
+                        $str = substr($domain_detail->opt_out, 4);
+                        $str = substr($str, 0, -7);
+                        $string = '...';
+                        $string .= $str;
+                        $string .= '<br /> ...';
+                        $string = str_replace('...,', '...', $string);
+                        $string = str_replace('<br>,', '<br>', $string);
+                        echo $string;
                         }
                         @endphp
                     </p>
@@ -190,7 +223,7 @@
                 <form action="/searchemail" method="GET" id="search-email-form">
                     <div class="pl-3 pt-2 medium-card rounded text-light email-pane">
                         <h4 class="mb-2 text-light">Users that may have submit or used their company email on
-                            <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}">
+                            <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
                                 {{$domain_detail->monitoring_domain}}
                             </a>
                         </h4>
@@ -250,7 +283,7 @@
                 <p class="bottom-note"><strong>Note: </strong> You must select an email to use this feature</p>
             </div>
             <div class="d-flex p-0">
-                <button class="btn btn-home-footer theme-background-color mr-4">Send an email to selected
+                <button class="btn btn-home-footer theme-background-color mr-4 btn-send-email">Send an email to selected
                     user(s)</button>
                 <button class="btn btn-home-footer theme-background-color">Send a push notification</button>
             </div>
