@@ -86,23 +86,23 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-white"></i> <span class="text-white">{{ __('Home') }}</span>
+                        <i class="ni ni-tv-2 text-light"></i> <span class="text-light">{{ __('Home') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('search') }}">
-                        <i class="fa fa-search text-white"></i> <span class="text-white">{{ __('Search') }}</span>
+                        <i class="fa fa-search text-light"></i> <span class="text-light">{{ __('Search') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('policy') }}">
-                        <i class="ni ni-cloud-upload-96 text-white"></i> <span
-                            class="text-white">{{ __('Policy Upload') }}</span>
+                        <i class="ni ni-cloud-upload-96 text-light"></i> <span
+                            class="text-light">{{ __('Policy Upload') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('support') }}">
-                        <i class="ni ni-chat-round text-white"></i> <span class="text-white">{{ __('Support') }}</span>
+                        <i class="ni ni-chat-round text-light"></i> <span class="text-light">{{ __('Support') }}</span>
                     </a>
                 </li>
                 <!-- <li class="nav-item">

@@ -25,7 +25,9 @@ class SearchController extends Controller
      */
     public function index()
     {
-        return view('search');
+        $data = NULL;
+
+        return view('search', compact('data'));
     }
 
     /**
@@ -34,21 +36,21 @@ class SearchController extends Controller
      * @return \Illuminate\View\View
      */
     public function search_email(Request $request) {
-        $email_list = array();
-        array_push($email_list, $request->email);
-
-        // $result = Search::get_by_email($email_list);
+        if($request->search_email_type == 1) {
+            $email_list = array();
+            array_push($email_list, $request->email);    
+        } else {
+            $email_list = $request->sel_email;
+        }
         
-        // $data['result'] = $result;
-        // $email_list = ["chupkemi.chana@infosecafrica.co.uk"];
         $data_email_list = array();
         $data_email_list['EmailSearchAPI'] = array(
                                                 'company_domain' => 'privci.com',
                                                 'email_list' => $email_list
                                             );
         
-        $username = "privci_dev";
-        $key = "bhAAd231668uhgASt9eeeedd";
+        $username = env('API_DEV_NAME');
+        $key = env('API_KEY');
         
         $ch = curl_init("https://api.privci.com/enterprise/EmailSearch");
         curl_setopt($ch, CURLOPT_POST, true);
@@ -67,8 +69,14 @@ class SearchController extends Controller
         $header = substr($data, 0, $header_size);
         $body = substr($data, $header_size);
         curl_close($ch);
-        
-        return response()->json(json_decode($body));
+
+        if($request->search_email_type == 1) {
+            return response()->json(json_decode($body));
+        } else {
+            $data = json_decode($body);
+            
+            return view('search', compact('data', 'email_list'));
+        }
     }
 
     /**
@@ -83,8 +91,8 @@ class SearchController extends Controller
                                                 'domain' => $request->domain
                                             );
         
-        $username = "privci_dev";
-        $key = "bhAAd231668uhgASt9eeeedd";
+        $username = env('API_DEV_NAME');
+        $key = env('API_KEY');
         
         $ch = curl_init("https://api.privci.com/enterprise/DomainSearch");
         curl_setopt($ch, CURLOPT_POST, true);

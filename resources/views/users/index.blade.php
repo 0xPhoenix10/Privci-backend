@@ -200,7 +200,7 @@
                         </a>
                     </li>
                     <li class="nav-item mb-5 mr-4 ml-4 pl-1 bg-danger" style="position: absolute; bottom: 0;">
-                        <a class="nav-link text-white"
+                        <a class="nav-link text-light"
                             href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                             <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
                         </a>
@@ -241,7 +241,7 @@
 
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+                <a class="h4 mb-0 text-light text-uppercase d-none d-lg-inline-block"
                     href="{{ route('home') }}">Dashboard</a>
                 <!-- Form
     <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
@@ -317,7 +317,7 @@
                                             <span class="h2 font-weight-bold mb-0">350,897</span>
                                         </div>
                                         <div class="col-auto">
-                                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                            <div class="icon icon-shape bg-danger text-light rounded-circle shadow">
                                                 <i class="fas fa-chart-bar"></i>
                                             </div>
                                         </div>
@@ -338,7 +338,7 @@
                                             <span class="h2 font-weight-bold mb-0">2,356</span>
                                         </div>
                                         <div class="col-auto">
-                                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <div class="icon icon-shape bg-warning text-light rounded-circle shadow">
                                                 <i class="fas fa-chart-pie"></i>
                                             </div>
                                         </div>
@@ -359,7 +359,7 @@
                                             <span class="h2 font-weight-bold mb-0">924</span>
                                         </div>
                                         <div class="col-auto">
-                                            <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                            <div class="icon icon-shape bg-yellow text-light rounded-circle shadow">
                                                 <i class="fas fa-users"></i>
                                             </div>
                                         </div>
@@ -380,7 +380,7 @@
                                             <span class="h2 font-weight-bold mb-0">49,65%</span>
                                         </div>
                                         <div class="col-auto">
-                                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                            <div class="icon icon-shape bg-info text-light rounded-circle shadow">
                                                 <i class="fas fa-percent"></i>
                                             </div>
                                         </div>

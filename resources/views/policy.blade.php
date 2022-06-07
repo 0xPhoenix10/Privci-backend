@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="container-fluid main-container pt-7 pb-7 bg-darker">
-    <div class="text-white">
-        <h1 class="text-white mb-2">Upload A Data Protection Policy</h1>
-        <h4 class="text-white">This will allow users to ask questions and receive answers that are token directly from
+    <div class="text-light">
+        <h1 class="text-light mb-2">Upload A Data Protection Policy</h1>
+        <h4 class="text-light">This will allow users to ask questions and receive answers that are token directly from
             your data protection policy</h4>
         <p class="upload-note mb-5"><strong>Note:</strong> Content will only be available to colleagues within your
             organisation</p>
@@ -16,7 +16,7 @@
             <p class="upload-note">Supported:<br>pdf, doc, docx, text</p>
         </div>
         <div class="d-flex align-items-center">
-            <h4 class="text-white mr-2">Or extract from a link: </h4>
+            <h4 class="text-light mr-2">Or extract from a link: </h4>
             <input type="url" class="col-4 form-control" id="email" placeholder="Add link to extract..." name="url">
             <button class="btn theme-background-color ml-2 mr-2">Extract</button>
             <p class="upload-note">Supported:<br>pdf, html</p>
@@ -27,11 +27,11 @@
         placeholder="Copy and paste policy text..."></textarea>
 
     <div class="d-flex align-items-center mb-3">
-        <h4 class="mr-3 text-white">Add a title to this document: </h4>
+        <h4 class="mr-3 text-light">Add a title to this document: </h4>
         <input type="text" class="col form-control" id="policy_title" placeholder="Start typing..." name="policy_title">
     </div>
     <div class="d-flex align-items-center mb-5">
-        <h5 class="mr-3 text-white">Adding a link to the original document will allow users to access it from the
+        <h5 class="mr-3 text-light">Adding a link to the original document will allow users to access it from the
             extension: </h5>
         <input type="text" class="col form-control" id="policy_link" placeholder="Paste link..." name="policy_link">
     </div>
@@ -44,8 +44,8 @@
     @endphp
     <div class="faq-accordian-container">
         <div class="faq-upload">
-            <h2 class="text-white mr-3">Documents Uploaded</h2>
-            <div class="col add-tab border-dark text-white p-2 faq-accordion bg-dark">Add a FAQ (up to 5 FAQ may be
+            <h2 class="text-light mr-3">Documents Uploaded</h2>
+            <div class="col add-tab border-dark text-light p-2 faq-accordion bg-dark">Add a FAQ (up to 5 FAQ may be
                 added)</div>
         </div>
         <div class="faq-panel bg-dark">

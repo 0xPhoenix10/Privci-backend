@@ -92,7 +92,7 @@
                 </a>
               </li>
             <li class="nav-item mb-5 mr-4 ml-4 pl-1 bg-danger" style="position: absolute; bottom: 0;">
-                <a class="nav-link text-white" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
+                <a class="nav-link text-light" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                     <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
                 </a>
             </li>
@@ -378,7 +378,7 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Upgrade to PRO</h6>
+              <h6 class="h2 text-light d-inline-block mb-0">Upgrade to PRO</h6>
             </div>
             <div class="col-lg-6 col-5 text-right">
               <a href="#" class="btn btn-sm btn-neutral">New</a>

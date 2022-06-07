@@ -1,11 +1,15 @@
 $(function () {
-    $('.inner-card .form-check').each(function () {
+    var selected_emails = [];
+
+    // selected domain select
+    $('.domain-list .form-check').each(function () {
         if ($(this).find('input[type=radio]').val() == $('#selected_domain').val()) {
             $(this).find('input[type=radio]').prop('checked', true);
         }
     });
 
-    $('.domain-list label.form-check-label').on('click', function () {
+    // when select domain then go to /get_by_domain
+    $('.domain-list').delegate('label.form-check-label', 'click', function() {
         var domain = $(this).prev().val();
 
         location.href = '/get_by_domain/' + domain;
@@ -21,7 +25,7 @@ $(function () {
         }
     });
 
-    $('.breach-panel label.form-check-label').on('click', function () {
+    $('.email-pane label.form-check-label').on('click', function () {
         if ($(this).find('input').prop('checked') == true) {
             $(this).find('input').prop('checked', false);
         } else {
@@ -31,9 +35,166 @@ $(function () {
 
     $('#select-all').on('change', function () {
         if ($(this).is(':checked')) {
-            $('.breach-panel label.form-check-label input').prop('checked', true);
+            $('.email-pane label.form-check-label input').prop('checked', true);
         } else {
-            $('.breach-panel label.form-check-label input').prop('checked', false);
+            $('.email-pane label.form-check-label input').prop('checked', false);
         }
     });
+
+    // sort by az
+    $('#sort_az').on('click', function() {
+        $.ajax({
+            url: '/sort_domain',
+            data: {
+                type: "monitoring_domain",
+                order: $(this).data('order'),
+                selected: $('#selected_domain').val()
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (resp) {
+                $('.domain-list').html(resp.html);
+                if(resp.order == 'asc') {
+                    $('#sort_az').data('order', 'desc');
+                    $('#sort_az i').removeClass('fa-arrow-down-z-a');
+                    $('#sort_az i').addClass('fa-arrow-down-a-z');
+                } else {
+                    $('#sort_az').data('order', 'asc');
+                    $('#sort_az i').removeClass('fa-arrow-down-a-z');
+                    $('#sort_az i').addClass('fa-arrow-down-z-a');
+                }
+            }
+        });
+    });
+
+    // sort by breach
+    $('#sort_breach').on('click', function() {
+        $.ajax({
+            url: '/sort_domain',
+            data: {
+                type: "no_of_breaches",
+                order: $(this).data('order'),
+                selected: $('#selected_domain').val()
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (resp) {
+                $('.domain-list').html(resp.html);
+                if(resp.order == 'asc') {
+                    $('#sort_breach').data('order', 'desc');
+                    $('#sort_breach i').removeClass('fa-arrow-down-9-1');
+                    $('#sort_breach i').addClass('fa-arrow-down-1-9');
+                } else {
+                    $('#sort_breach').data('order', 'asc');
+                    $('#sort_breach i').removeClass('fa-arrow-down-1-9');
+                    $('#sort_breach i').addClass('fa-arrow-down-9-1');
+                }
+            }
+        });
+    });
+
+    // sort by email
+    $('#sort_email').on('click', function() {
+        $.ajax({
+            url: '/sort_email',
+            data: {
+                type: "monitoring_domain",
+                order: $(this).data('order'),
+                selected: $('#selected_domain').val()
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (resp) {
+                $('.domain-list').html(resp.html);
+                if(resp.order == 'asc') {
+                    $('#sort_email').data('order', 'desc');
+                    $('#sort_email i').removeClass('fa-arrow-down-9-1');
+                    $('#sort_email i').addClass('fa-arrow-down-1-9');
+                } else {
+                    $('#sort_email').data('order', 'asc');
+                    $('#sort_email i').removeClass('fa-arrow-down-1-9');
+                    $('#sort_email i').addClass('fa-arrow-down-9-1');
+                }
+            }
+        });
+    });
+
+    // search by domain
+    $('#search-domain').on('keyup', function() {
+        var keyword = $(this).val();
+        var type = $('#select-search-type').val();
+
+        search_by_keyword(keyword, type);
+    });
+
+    $('#search-email').on('keyup', function() {
+        var keyword = $(this).val();
+        $.ajax({
+            url: '/search_by_email',
+            data: {
+                keyword: keyword,
+                selected: $('#selected_domain').val()
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function(resp) {
+                if(resp.no_email) {
+                    $('.email-pane').html(resp.html);    
+                } else {
+                    var html = '<h4 class="mb-2 text-white">Users that may have submit or used their company email on <a class="theme-color" href="' + "https://" + resp.domain + '">' + resp.domain + '</a></h4>';
+                    html += '<div class="row">';
+                    html += resp.html;
+                    html += '</div>';
+                    $('.email-pane').html(html);    
+                }
+            }
+        });
+    });
+
+    $('#select-search-type').on('change', function() {
+        if($(this).val() == 'email') {
+            $('#search-domain').prop('placeholder', 'Enter email');
+        } else {
+            $('#search-domain').prop('placeholder', 'Enter domain');
+        }
+    });
+
+    $('.btn-check-email').on('click', function(){
+        $('.email-pane label.form-check-label').each(function() {
+            if ($(this).find('input').prop('checked') == true) {
+                selected_emails.push($(this).find('input').val());
+            }
+        });
+
+        if(selected_emails.length == 0) {
+            swal.fire({
+                title: "Check email",
+                text: "You must select an email to use this feature",
+                type: 'warning',
+                icon: "warning",
+                dangerMode: true,
+                confirmButtonColor: "#009683",
+                confirmButtonText: 'OK'
+            });
+        }
+
+        $("#search-email-form").submit();
+    });
 });
+
+function search_by_keyword(keyword, type) {
+    $.ajax({
+        url: '/search_by_keyword',
+        data: {
+            keyword: keyword,
+            type: type,
+            selected: $('#selected_domain').val()
+        },
+        type: 'GET',
+        dataType: 'json',
+        success: function(resp) {
+            $('.domain-list').html(resp.html);
+        }
+    });
+}
+
