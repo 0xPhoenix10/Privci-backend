@@ -54,4 +54,29 @@ class Search extends Model
         
         return $result;
     }
+
+    public static function get_domains_by_order($request) {
+        $result = DB::table('monitored_domain_stats')
+                        ->select('monitoring_domain')
+                        ->orderBy($request->type, $request->order)
+                        ->get()->toArray();
+        
+        return $result;
+    }
+
+    public static function get_domains_by_keyword($request) {
+        if($request->type == 'domain') {
+            $result = DB::table('monitored_domain_stats')
+                        ->select('monitoring_domain')
+                        ->where('monitoring_domain', 'like', '%' . $request->keyword . '%')
+                        ->get()->toArray();
+        } else {
+            $result = DB::table('organisation')
+                        ->select('monitoring_domain')
+                        ->where('colleague_emails', 'like', '%' . $request->keyword . '%')
+                        ->get()->toArray();
+        }
+        
+        return $result;
+    }
 }

@@ -331,3 +331,21 @@ h6 {
 .swal2-popup .swal2-content {
     color: #545454 !important;
 }
+
+.no-domain {
+    color: white !important;
+    text-align: center;
+}
+
+.search-intro {
+    text-align: center;
+    font-size: 18px;
+}
+
+.search-page-title {
+    font-size: 40px;
+}
+
+.search-content a {
+    color: #009683 !important;
+}

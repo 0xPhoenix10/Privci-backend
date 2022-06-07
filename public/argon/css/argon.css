@@ -6858,6 +6858,17 @@ button.bg-danger:focus {
     background-color: #ec0c38 !important;
 }
 
+.bg-darkred {
+    background-color: #241717 !important;
+}
+
+a.bg-darkred:hover,
+a.bg-darkred:focus,
+button.bg-darkred:hover,
+button.bg-darkred:focus {
+    background-color: #241717 !important;
+}
+
 .bg-light {
     background-color: #adb5bd !important;
 }
@@ -8196,6 +8207,11 @@ button.bg-darker:focus {
 
 .m--9 {
     margin: -10rem !important;
+}
+
+.mt--16,
+.my--16 {
+    margin-top: -16rem !important;
 }
 
 .mt--9,
@@ -15771,7 +15787,7 @@ textarea[resize="horizontal"] {
     text-transform: uppercase;
 }
 .navbar-horizontal .navbar-brand img {
-    height: 30px;
+    height: 70px;
 }
 
 .navbar-horizontal .navbar-dark .navbar-brand {
@@ -16262,7 +16278,6 @@ textarea[resize="horizontal"] {
         right: auto;
         bottom: 0.25rem;
         left: 0;
-
         border-bottom: 0;
         border-left: 2px solid #5e72e4;
     }
@@ -16272,16 +16287,17 @@ textarea[resize="horizontal"] {
     .navbar-vertical.navbar-expand-md .navbar-nav .nav .nav .nav-link {
         padding-left: 4.5rem;
     }
+
     .navbar-vertical.navbar-expand-md .navbar-brand {
         display: block;
 
         padding-top: 1rem;
         padding-bottom: 1rem;
 
-        text-align: center;
+        text-align: left;
     }
     .navbar-vertical.navbar-expand-md .navbar-brand-img {
-        max-height: 2.5rem;
+        max-height: 3.5rem;
     }
     .navbar-vertical.navbar-expand-md .navbar-user {
         margin-right: -1.5rem;
@@ -18187,4 +18203,13 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     bottom: 0;
 
     height: 3px;
+}
+
+/* header */
+.header-title {
+    height: 100px;
+}
+
+.header-title h1 {
+    font-size: 40px;
 }
