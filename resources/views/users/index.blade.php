@@ -100,7 +100,7 @@
                         <i class="ni ni-single-02"></i>
                         <span>My profile</span>
                         </a>
-                        <a href="account" class="dropdown-item">
+                        <a href="/account" class="dropdown-item">
                             <i class="ni ni-settings-gear-65"></i>
                             <span>Settings</span>
                         </a>
@@ -269,7 +269,7 @@
                                 <i class="ni ni-single-02"></i>
                                 <span>My profile</span>
                             </a> -->
-                            <a href="account" class="dropdown-item">
+                            <a href="/account" class="dropdown-item">
                                 <i class="ni ni-settings-gear-65"></i>
                                 <span>Settings</span>
                             </a>

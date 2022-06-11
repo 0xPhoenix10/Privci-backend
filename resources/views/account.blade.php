@@ -12,7 +12,7 @@
             </div>
             <div class="d-flex">
                 <h3 class="m-0 mr-2 text-light">Email address: </h3>
-                <p class="m-0 text-light">name@company.com</p>
+                <p class="m-0 text-light">{{auth()->user()->email}}</p>
             </div>
             <div class="d-flex">
                 <h3 class="m-0 mr-2 text-light">Account Type: </h3>
@@ -20,7 +20,7 @@
             </div>
             <div class="d-flex">
                 <h3 class="m-0 mr-2 p-0 text-light">Renewal Date: </h3>
-                <p class="col-9 m-0 text-light">20-10-2022</p>
+                <p class="col-9 m-0 p-0 text-light">{{auth()->user()->updated_at}}</p>
             </div>
         </div>
     </div>
@@ -78,16 +78,78 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-12 mb-4">
+    <!-- <div class="col-xl-12 mb-4">
         <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-light">Change Password</h1>
             <div class="d-flex">
                 <h3 class="m-0 mr-2 text-light">Account: </h3>
-                <p class="m-0 text-light">name@company.com</p>
+                <p class="m-0 text-light">{{auth()->user()->email}}</p>
             </div>
             <input type="text" placeholder="Current Password" class="form-control mb-3">
             <input type="text" placeholder="New Password" class="form-control mb-3">
             <button class="btn theme-background-color">Change Password</button>
+        </div>
+    </div> -->
+    <div class="col-xl-12 mb-4">
+        <div class="card-header bg-dark" style="border-radius: 5px">
+            <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                @csrf
+                @method('put')
+
+                <h1 class="m-0 mr-2 text-light">{{ __('Change Password') }}</h1>
+                <div class="d-flex">
+                    <h3 class="m-0 mr-2 text-light">Account: </h3>
+                    <p class="m-0 text-light">{{auth()->user()->email}}</p>
+                </div>
+
+                @if (session('password_status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('password_status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
+                <div>
+                    <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
+                        <label class="form-control-label"
+                            for="input-current-password">{{ __('Current Password') }}</label>
+                        <input type="password" name="old_password" id="input-current-password"
+                            class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}"
+                            placeholder="{{ __('Current Password') }}" value="" required>
+
+                        @if ($errors->has('old_password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('old_password') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                        <label class="form-control-label" for="input-password">{{ __('New Password') }}</label>
+                        <input type="password" name="password" id="input-password"
+                            class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                            placeholder="{{ __('New Password') }}" value="" required>
+
+                        @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label"
+                            for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
+                        <input type="password" name="password_confirmation" id="input-password-confirmation"
+                            class="form-control form-control-alternative" placeholder="{{ __('Confirm New Password') }}"
+                            value="" required>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success mt-4">{{ __('Change password') }}</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
