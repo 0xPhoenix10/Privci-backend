@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid pt-7 pb-7 bg-darker">
+<div class="container-fluid main-container pt-7 pb-7 bg-darker">
     <div class="col-xl-12 mb-4">
         <div class="card">
             <div class="card-header bg-dark">
@@ -33,8 +33,3 @@
 </style>
 
 @endsection
-
-@push('js')
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

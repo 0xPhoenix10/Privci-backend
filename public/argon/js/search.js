@@ -3,6 +3,8 @@ $(function() {
         var html = $(this).text();
         $(this).html(html);
     });
+
+    // $('.main-container').css('minHeight', $(window).height());
 });
 
 $('#search_option').on('change', function () {

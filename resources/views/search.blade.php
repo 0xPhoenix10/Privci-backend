@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container-fluid main-container pt-7 pb-7 bg-darker">
     <div class="text-center text-light">
         <h1 class="text-light search-page-title">Search Our Database</h1>
@@ -127,7 +126,5 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
 <script src="{{ asset('argon') }}/js/search.js"></script>
 @endpush
