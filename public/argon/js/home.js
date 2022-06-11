@@ -183,7 +183,7 @@ $(function () {
 
         if($check == 1) {
             var send_emails = selected_emails.join(';');
-            var mailto = "mailto:" + first_email + "&cc=" + send_emails;
+            var mailto = "mailto:" + first_email + "?cc=" + send_emails;
 
             location.href = mailto;
         }
