@@ -1,3 +1,7 @@
+$(function() {
+    $('.main-container').css('minHeight', $(window).height());
+});
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 
