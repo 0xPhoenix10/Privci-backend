@@ -6,7 +6,7 @@
         <div class="header-body text-center mt-7 mb-7">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6 header-title">
-                    <h1 class="text-light">{{ __('Privci.io') }}</h1>
+                    <h1 class="text-light">{{ __('the "Privci.io"') }}</h1>
                 </div>
             </div>
         </div>

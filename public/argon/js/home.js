@@ -170,16 +170,51 @@ $(function () {
 
     $('.btn-send-email').on('click', function(e) {
         selected_emails = [];
+        var send_emails = '';
         e.preventDefault();
         $check = email_select_check();
 
+        if(selected_emails.length == 1) {
+            send_emails = selected_emails[0];
+        } else {
+            var first_email = selected_emails[0];
+            selected_emails.shift();
+        }
+
         if($check == 1) {
-            var send_emails = selected_emails.join(',');
-            var mailto = "mailto:" + send_emails;
+            var send_emails = selected_emails.join(';');
+            var mailto = "mailto:" + first_email + "&cc=" + send_emails;
 
             location.href = mailto;
         }
-    })
+    });
+
+    $('.btn-push-notify').on('click', function() {
+        $check = email_select_check();
+
+        if($check == 1) {
+            function notify(title, callback) {
+
+                var options = {
+                    type: "list",
+                    title: title,
+                    message: "Primary message to display",
+                    items: [{ title: "Item1", message: "This is item 1."},
+                            { title: "Item2", message: "This is item 2."},
+                            { title: "Item3", message: "This is item 3."}]
+                };
+            
+                // The first argument is the ID, if left blank it'll be automatically generated.
+                // The second argument is an object of options. More here: https://developer.chrome.com/extensions/notifications#type-NotificationOptions
+                return chrome.notifications.create("", options, callback);
+            
+            }
+            
+            notify("Testing", function(notification){
+                // Do whatever you want. Called after notification is created.
+            });
+        }
+    });
 });
 
 function search_by_keyword(keyword, type) {
@@ -207,7 +242,7 @@ function email_select_check() {
 
     if(selected_emails.length == 0) {
         swal.fire({
-            title: "Check email",
+            title: "No email selected!",
             text: "You must select an email to use this feature",
             type: 'warning',
             icon: "warning",

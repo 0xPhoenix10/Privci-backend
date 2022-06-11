@@ -285,10 +285,10 @@
             <div class="d-flex p-0">
                 <button class="btn btn-home-footer theme-background-color mr-4 btn-send-email">Send an email to selected
                     user(s)</button>
-                <button class="btn btn-home-footer theme-background-color">Send a push notification</button>
+                <button class="btn btn-home-footer theme-background-color btn-push-notify">Send a push
+                    notification</button>
             </div>
         </div>
-
     </div>
 </div>
 
