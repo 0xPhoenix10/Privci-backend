@@ -62,7 +62,7 @@
                                 <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
                             </div>
                             <div class="d-flex align-items-center">
-                                <h4 class="m-0 ml-3 mr-2 theme-color">Privacy policy:</h4>
+                                <h4 class="m-0 mr-2 theme-color">Privacy policy:</h4>
                                 <p class="m-0">
                                     <a href="{{$domain_detail->privacy_policy}}"
                                         target="_blank">{{$domain_detail->privacy_policy}}</a>
