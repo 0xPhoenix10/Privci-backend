@@ -52,7 +52,11 @@
         <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-light">Notifications</h1>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="account_notification" name="" value="something">
+                @php
+                $check = $setting->notification == "True" ? 'checked' : '';
+                @endphp
+                <input type="checkbox" class="form-check-input" id="account_notification"
+                    onchange="save_notification_status('{{$setting->notification}}')" name="notification" {{$check}}>
                 <label class="form-check-label" for="account_notification">
                     I want to be notified in the event where my company email address is found in a data breach in the
                     future.
@@ -61,18 +65,19 @@
             <div class="d-flex align-items-center">
                 <h3 class="m-0 mr-2 p-0">Send email notifications to: </h3>
                 <div class="d-flex align-items-center" id="notification_p">
-                    <p>infosec@company.com </p>
+                    <p>{{$setting->notification_email}}</p>
                     <i class="fa fa-edit ml-2" onClick="
                         document.getElementById('notification_p').setAttribute('style', 'display:none !important');
                         document.getElementById('notification_input').style.display = '';
                     "></i>
                 </div>
                 <div class="d-flex align-items-center" id="notification_input" style="display:none !important">
-                    <input type="text" class="pl-2 pr-2 rounded" value="infosec@company.com">
+                    <input type="text" class="pl-2 pr-2 rounded" value="{{$setting->notification_email}}">
                     <i class="fa fa-save ml-2" onClick="
                         document.getElementById('notification_p').children[0].innerHTML = document.getElementById('notification_input').children[0].value;
                         document.getElementById('notification_p').style.display = '';
                         document.getElementById('notification_input').setAttribute('style', 'display:none !important');
+                        save_notification_email($(this).prev().val());
                     "></i>
                 </div>
             </div>
@@ -145,7 +150,7 @@
                             value="" required>
                     </div>
 
-                    <div class="text-center">
+                    <div class="text-left">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Change password') }}</button>
                     </div>
                 </div>
@@ -164,8 +169,3 @@
 
 
 @endsection
-
-@push('js')
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

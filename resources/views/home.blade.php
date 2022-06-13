@@ -57,7 +57,7 @@
                                 <h4 class="m-0 mr-2 theme-color">Company Name:</h4>
                                 <p class="m-0">{{$domain_detail->company_name}}</p>
                             </div>
-                            <div class="d-flex align-items-center">
+                            <div class="mr-3 d-flex align-items-center">
                                 <h4 class="m-0 mr-2 theme-color">No of breaches:</h4>
                                 <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
                             </div>
@@ -290,7 +290,7 @@
                     breach</button>
                 <p class="bottom-note"><strong>Note: </strong> You must select an email to use this feature</p>
             </div>
-            <div class="d-flex p-0">
+            <div class="d-flex p-0 mr-4">
                 <button class="btn btn-home-footer theme-background-color mr-4 btn-send-email">Send an email to selected
                     user(s)</button>
                 <button class="btn btn-home-footer theme-background-color btn-push-notify">Send a push
@@ -307,7 +307,5 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
 <script src="{{ asset('argon') }}/js/home.js"></script>
 @endpush

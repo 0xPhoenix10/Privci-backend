@@ -45,3 +45,36 @@ function onAddDocument() {
 
     document.getElementsByClassName("faq-panel")[0].style.maxHeight = null;
 }
+
+function save_notification_email(email) {
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        url: '/save_notification_email',
+        data: {
+            _token: CSRF_TOKEN,
+            email: email
+        },
+        type: 'POST',
+        dataType: 'json',
+        success: function () {
+            
+        }
+    });
+}
+
+function save_notification_status(status) {
+    console.log(status);
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        url: '/save_notification_status',
+        data: {
+            _token: CSRF_TOKEN,
+            status: status
+        },
+        type: 'POST',
+        dataType: 'json',
+        success: function () {
+            
+        }
+    });
+}

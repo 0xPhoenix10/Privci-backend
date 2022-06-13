@@ -17,7 +17,7 @@
                     aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/avatar/avatar.png">
                         </span>
                     </div>
                 </a>
@@ -97,6 +97,19 @@
                         <i class="ni ni-chat-round text-light"></i> <span class="text-light">{{ __('Support') }}</span>
                     </a>
                 </li>
+
+                @php
+                if(auth()->user()->id == 1):
+                @endphp
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.index') }}">
+                        <i class="fa-solid fa-users text-light"></i> <span
+                            class="text-light">{{ __('User Manage') }}</span>
+                    </a>
+                </li>
+                @php
+                endif;
+                @endphp
                 <!-- <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button"
                         aria-expanded="true" aria-controls="navbar-examples">

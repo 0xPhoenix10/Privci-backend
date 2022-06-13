@@ -90,10 +90,14 @@ h6 {
     display: none;
 }
 
-.inner-card {
-    background-color: #31383e;
+.breach-panel .inner-card {
     margin-right: 20px;
 }
+
+.inner-card {
+    background-color: #31383e;
+}
+
 .medium-card {
     background-color: #212529;
 }
@@ -357,3 +361,5 @@ h6 {
 .search-content a {
     color: #009683 !important;
 }
+
+/* User page */

@@ -54,6 +54,13 @@ Route::post('/add_faq', [App\Http\Controllers\PolicyController::class, 'add_faq'
 Route::post('/edit_faq', [App\Http\Controllers\PolicyController::class, 'edit_faq']);
 Route::post('/delete_faq', [App\Http\Controllers\PolicyController::class, 'delete_faq']);
 
+Route::post('/save_notification_email', [App\Http\Controllers\AccountController::class, 'save_notification_email']);
+Route::post('/save_notification_status', [App\Http\Controllers\AccountController::class, 'save_notification_status']);
+
+Route::get('/user/edit', [App\Http\Controllers\UserController::class, 'edit']);
+Route::get('user/edit/{key}', [App\Http\Controllers\UserController::class, 'edit']);
+Route::put('/user/edit', [App\Http\Controllers\UserController::class, 'edit']);
+Route::get('user/delete/{key}', [App\Http\Controllers\UserController::class, 'delete']);
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);

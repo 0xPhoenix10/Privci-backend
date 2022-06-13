@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Models\Setting;
+
 class AccountController extends Controller
 {
     /**
@@ -21,6 +25,31 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('account');
+        $settings = Setting::get_settings();
+        $setting = $settings[0];
+
+        return view('account', compact('setting'));
+    }
+
+    public function save_notification_email(Request $request) {
+        $data['status'] = 'error';
+        $result = Setting::update_notification_email($request->email);
+
+        if($result) {
+            $data['status'] = 'success';
+        }
+
+        return response()->json($data);
+    }
+
+    public function save_notification_status(Request $request) {
+        $data['status'] = 'error';
+        $result = Setting::update_notification_status($request->status);
+
+        if($result) {
+            $data['status'] = 'success';
+        }
+
+        return response()->json($data);
     }
 }
