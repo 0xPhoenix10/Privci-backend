@@ -15,6 +15,12 @@ $(function () {
         location.href = '/get_by_domain/' + domain;
     });
 
+    $('.domain-list').delegate('input[type=radio]', 'click', function() {
+        var domain = $(this).val();
+
+        location.href = '/get_by_domain/' + domain;
+    });
+
     $('button.accordion').on('click', function () {
         if ($(this).find('i').hasClass('fa-caret-down')) {
             $(this).find('i').removeClass('fa-caret-down');
@@ -30,6 +36,14 @@ $(function () {
             $(this).find('input').prop('checked', false);
         } else {
             $(this).find('input').prop('checked', true);
+        }
+    });
+
+    $('.email-pane .form-check-input').on('click', function () {
+        if ($(this).prop('checked') == true) {
+            $(this).prop('checked', false);
+        } else {
+            $(this).prop('checked', true);
         }
     });
 
