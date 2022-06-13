@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,4 +42,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function get_all_users() {
+        $result = DB::table('users')
+                        ->select('*')
+                        ->get()->toArray();
+        
+        return $result;
+    }
+
+    public static function get_user($id) {
+        $result = DB::table('users')
+                        ->select('*')
+                        ->where('id', $id)
+                        ->get()->toArray();
+        
+        return $result;
+    }
 }
