@@ -64,8 +64,16 @@
                             <div class="d-flex align-items-center">
                                 <h4 class="m-0 mr-2 theme-color">Privacy policy:</h4>
                                 <p class="m-0">
+                                    @php
+                                    if(!str_contains($domain_detail->privacy_policy, 'http')):
+                                    @endphp
+                                    <a href="#">{{$domain_detail->privacy_policy}}</a>
+                                    @php
+                                    else:
+                                    @endphp
                                     <a href="{{$domain_detail->privacy_policy}}"
                                         target="_blank">{{$domain_detail->privacy_policy}}</a>
+                                    @endif
                                 </p>
                             </div>
                         </div>
