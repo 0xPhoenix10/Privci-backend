@@ -105,8 +105,7 @@
                 if(auth()->user()->id == 1):
                 @endphp
                 <li class="nav-item mb-2">
-                    <a class="nav-link {{str_contains($url, 'support') ? 'active' : ''}}"
-                        href="{{ route('user.index') }}">
+                    <a class="nav-link {{str_contains($url, 'user') ? 'active' : ''}}" href="{{ route('user.index') }}">
                         <i class="fa-solid fa-users text-light"></i> <span
                             class="text-light">{{ __('User Manage') }}</span>
                     </a>
