@@ -26,9 +26,9 @@
             </div>
             <div class="pt-3 pl-2 pb-3 pr-2 inner-card rounded justify-content-between domain-list">
                 @foreach($domains as $domain)
-                <div class="form-check d-flex align-items-center">
+                <div class="form-check d-flex align-items-center" title="{{$domain->monitoring_domain}}">
                     <input class="form-check-input" type="radio" name="domain_name"
-                        value="{{$domain->monitoring_domain}}" />
+                        value="{{$domain->monitoring_domain}}" title="{{$domain->monitoring_domain}}" />
                     <label class="form-check-label text-light ellipsis">
                         {{$domain->monitoring_domain}}
                     </label>
@@ -53,28 +53,33 @@
                 <div class="p-2 medium-card rounded text-light">
                     <div class="d-flex mb-2 justify-content-between theme-color">
                         <div class="col-md-11 p-0 d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <h4 class="m-0 mr-2 theme-color">Company Name:</h4>
-                                <p class="m-0">{{$domain_detail->company_name}}</p>
-                            </div>
-                            <div class="mr-3 d-flex align-items-center">
-                                <h4 class="m-0 mr-2 theme-color">No of breaches:</h4>
-                                <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <h4 class="m-0 mr-2 theme-color">Privacy policy:</h4>
-                                <p class="m-0">
-                                    @php
-                                    if(!str_contains($domain_detail->privacy_policy, 'http')):
-                                    @endphp
-                                    <a href="#">{{$domain_detail->privacy_policy}}</a>
-                                    @php
-                                    else:
-                                    @endphp
-                                    <a href="{{$domain_detail->privacy_policy}}"
-                                        target="_blank">{{$domain_detail->privacy_policy}}</a>
-                                    @endif
-                                </p>
+                            <div class="row">
+                                <div class="col-xl-4 d-flex">
+                                    <h4 class="m-0 mr-2 theme-color">Name:</h4>
+                                    <p class="m-0" title="{{$domain_detail->company_name}}"
+                                        style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        {{$domain_detail->company_name}}</p>
+                                </div>
+                                <div class="col-xl-3 d-flex">
+                                    <h4 class="m-0 mr-2 theme-color">No of breaches:</h4>
+                                    <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
+                                </div>
+                                <div class="col-xl-5 d-flex">
+                                    <h4 class="m-0 mr-2 theme-color">Privacy policy:</h4>
+                                    <p class="privacy-policy m-0" title="{{$domain_detail->privacy_policy}}"
+                                        style="width: 55%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        @php
+                                        if(!str_contains($domain_detail->privacy_policy, 'http')):
+                                        @endphp
+                                        <a href="#" class="text-warning">{{$domain_detail->privacy_policy}}</a>
+                                        @php
+                                        else:
+                                        @endphp
+                                        <a href="{{$domain_detail->privacy_policy}}"
+                                            target="_blank">{{$domain_detail->privacy_policy}}</a>
+                                        @endif
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <p class="page-show">
@@ -96,43 +101,47 @@
                     <div class="breach-content">
                         <div class="search-result-info">
                             <h4 class="m-0 text-light">Breach Date:</h4>
-                            <p class="col m-0">{{$first_breach_array['breach date']}}</p>
+                            <p class="col m-0 breach-date">{{$first_breach_array['breach date']}}</p>
                         </div>
                         <div class="search-result-info">
                             <h4 class="m-0 text-light">No of Records:</h4>
-                            <p class="col m-0">{{$first_breach_array['no of records']}}</p>
+                            <p class="col m-0 breach-no-of-records">{{$first_breach_array['no of records']}}</p>
                         </div>
                         <div class="search-result-info">
                             <h4 class="m-0 p-0 text-light">Breach of Summary:</h4>
-                            <p class="col-9 m-0">{{$first_breach_array['breach summary']}}</p>
+                            <p class="col-9 m-0 breach-summary">{{$first_breach_array['breach summary']}}</p>
                         </div>
                         <div class="search-result-info">
                             <h4 class="m-0 text-light">Reference:</h4>
-                            <a href="{{$first_breach_array['reference']}}" class="col m-0">
+                            <a href="{{$first_breach_array['reference']}}" target="_blank"
+                                class="breach-reference col m-0 breach-refer">
                                 {{$first_breach_array['reference']}}
                             </a>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <p class="m-0 p-0 theme-color pagination-button">Previous</p>
+                        <p class="breach-previous m-0 p-0 theme-color pagination-button disabled">Previous
+                        </p>
                         <ul class="d-flex align-items-center ml-2 m-0 mr-2 p-0 pagination-button">
                             @php
                             for($i=0; $i<$breach_count; $i++) { @endphp <li
-                                class="list-unstyled pl-2 pr-2 {{$i==0 ? 'page-selected' : ''}}" data-index="{{$i}}">
+                                class="breach-pagination-btn list-unstyled pl-2 pr-2 {{$i==0 ? 'page-selected' : ''}}"
+                                data-index="{{$i}}">
                                 {{$i+1}}</li>
                                 @php
                                 }
                                 @endphp
                         </ul>
-                        <p class="m-0 p-0 theme-color pagination-button">Next</p>
+                        <p class="breach-next m-0 p-0 theme-color pagination-button">Next</p>
                     </div>
                     @php
                     }
                     @endphp
                 </div>
                 <div class="accordian-container mb-5 mt-2">
-                    <button class="accordion">Does the Internet company sell the personal data of its users?
+                    <button class="accordion">🛒 Is the website selling or renting the personal information of its
+                        users?
                         @php
                         if($domain_detail->data_sell != ""):
                         @endphp
@@ -158,7 +167,7 @@
                         }
                         @endphp
                     </p>
-                    <button class="accordion">Do they share personal data for marketing purposes?
+                    <button class="accordion">👥 Does the website share personal information for marketing purposes?
                         @php
                         if($domain_detail->data_share != ""):
                         @endphp
@@ -185,7 +194,7 @@
                         }
                         @endphp
                     </p>
-                    <button class="accordion">Statement(s) related to opting out found in the Privacy Policy
+                    <button class="accordion">📨 Are users able to opt-out of data sale, marketing, or advertising?
                         @php
                         if($domain_detail->opt_out != ""):
                         @endphp
@@ -224,7 +233,7 @@
                         </div>
                     </div>
                     <div class="form-check d-flex align-items-center">
-                        <label class="form-check-label text-light" for="select-all"> Select all </label>
+                        <label class="form-check-label text-light" for="select-all"> Select all on this page </label>
                         <input class="form-check-input" type="checkbox" name="" id="select-all" />
                     </div>
                 </div>
@@ -237,8 +246,8 @@
                         </h4>
 
                         @php
-                        $total_email_count = count($domain_emails) > 50 ? 50 : count($domain_emails);
-                        $page_length = count($domain_emails) > 50 ? ceil(count($domain_emails) / 50) : 1;
+                        $total_email_count = count($domain_emails) > 51 ? 51 : count($domain_emails);
+                        $page_length = count($domain_emails) > 51 ? ceil(count($domain_emails) / 51) : 1;
 
                         if($total_email_count == 0) $page_length = 0;
 
@@ -247,7 +256,7 @@
                         } else {
                         echo "<div class='row email-list'>";
                             for($i=0; $i < $total_email_count; $i++) { if(trim($domain_emails[$i]) !='' ) { @endphp <div
-                                class="col-lg-3 col-md-6">
+                                class="col-lg-4 col-md-6">
                                 <div class="form-check">
                                     <label class="form-check-label ellipsis" for="">
                                         <input type="checkbox" class="form-check-input" name="sel_email[]"
@@ -265,15 +274,16 @@
                         @php
                         if($page_length > 0) {
                         @endphp
-                        <div><span class="theme-color"> 1</span>-<span class="theme-color">
-                                {{$page_length > 1 ? 50 : $total_email_count}}</span> of <span
-                                class="theme-color">{{count($domain_emails)}}</span> records</div>
+                        <div><span class="theme-color start"> 1</span>-<span class="theme-color end">
+                                {{$page_length > 1 ? 51 : $total_email_count-1}}</span> of <span
+                                class="theme-color">{{count($domain_emails)-1}}</span> records</div>
                         @php
                         if($page_length > 1) {
                         @endphp
                         <div class="col-2 m-0 mr-3 p-0 d-flex justify-content-between">
-                            <span class="theme-color pagination-button">Previous</span>
-                            <span class="theme-color pagination-button">Next</span>
+                            <span class="theme-color email-pagination-button previous disabled"
+                                data-index="0">Previous</span>
+                            <span class="theme-color email-pagination-button next" data-index="1">Next</span>
                         </div>
                         @php
                         }

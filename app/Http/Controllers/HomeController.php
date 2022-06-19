@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Search;
 
+
 class HomeController extends Controller
 {
     /**
@@ -23,26 +24,36 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         $type = 'all';
-        $domains = Search::get_all_domains();
-        foreach($domains as $domain) {
-            $first_domain_detail = Search::get_domain_detail($domain->monitoring_domain);
-            $first_domain_emails = Search::get_domain_emails($domain->monitoring_domain);
-            $domain_detail = $first_domain_detail[0];
-            $domain_emails = explode(',', $first_domain_emails[0]->colleague_emails);
-            $selected = $domain->monitoring_domain;
 
-            break;
+        $domains = Search::get_all_domains();
+        if($request->session()->get('selected_domain') == NULL) {
+            foreach($domains as $domain) {
+                $first_domain_detail = Search::get_domain_detail($domain->monitoring_domain);
+                $first_domain_emails = Search::get_domain_emails($domain->monitoring_domain);
+                $domain_detail = $first_domain_detail[0];
+                $domain_emails = explode(',', $first_domain_emails[0]->colleague_emails);
+                $selected = $domain->monitoring_domain;
+
+                break;
+            }
+        } else {
+            $selected = $request->session()->get('selected_domain');
+
+            $result = Search::get_domain_detail($selected);
+            $domain_emails = Search::get_domain_emails($selected);
+            $domain_detail = $result[0];
+            $domain_emails = explode(',', $domain_emails[0]->colleague_emails);
         }
 
         return view('home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'selected'));
     }
 
-    public function get_by_domain($key) {
+    public function get_by_domain(Request $request) {
         $type = "one";
-        $domain = $key;
+        $domain = $request->domain;
 
         $domains = Search::get_all_domains();
         $domain_detail = Search::get_domain_detail($domain);
@@ -54,9 +65,12 @@ class HomeController extends Controller
             $domain_emails = array();
         }
         
-        $selected = $domain;
+        $data['selected'] = $domain;
+        $request->session()->put('selected_domain', $domain);
 
-        return view('home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'selected'));
+        $data['html'] = view('__home', compact('domains', 'domain_detail', 'domain_emails', 'type'))->render();
+
+        return response()->json($data);
     }
 
     public function sort_email(Request $request) {
@@ -86,12 +100,12 @@ class HomeController extends Controller
 
         for($i=0; $i<count($domain_list); $i++) {
             if($domain_list[$i]['monitoring_domain'] == $request->selected) {
-                $data['html'] .= '<div class="form-check d-flex align-items-center">
+                $data['html'] .= '<div class="form-check d-flex align-items-center title="' . $domain_list[$i]['monitoring_domain'] . '"">
                                 <input class="form-check-input" type="radio" name="domain_name" value="' . $domain_list[$i]['monitoring_domain'] . '" checked>
                                 <label class="form-check-label text-white ellipsis">' . $domain_list[$i]['monitoring_domain'] . '</label>
                             </div>';
             } else {
-                $data['html'] .= '<div class="form-check d-flex align-items-center">
+                $data['html'] .= '<div class="form-check d-flex align-items-center title="' . $domain_list[$i]['monitoring_domain'] . '"">
                                 <input class="form-check-input" type="radio" name="domain_name" value="' . $domain_list[$i]['monitoring_domain'] . '">
                                 <label class="form-check-label text-white ellipsis">' . $domain_list[$i]['monitoring_domain'] . '</label>
                             </div>';
@@ -162,7 +176,7 @@ class HomeController extends Controller
             if(trim($email) == '') continue;
             
             if(str_contains(trim($email), $request->keyword)) {
-                $data['html'] .= '<div class="col-lg-3 col-md-6">
+                $data['html'] .= '<div class="col-lg-4 col-md-6">
                                     <div class="form-check">
                                         <label class="form-check-label ellipsis" for="">
                                             <input type="checkbox" class="form-check-input" name="sel_email[]" value="' . $email . '">' . $email . '
@@ -176,6 +190,48 @@ class HomeController extends Controller
             $data['html'] = '<div class="no-emails">No Emails!</div>';
             $data['no_email'] = true;
         }
+
+        return response()->json($data);
+    }
+
+    public function get_breach_info(Request $request) {
+        $domain_detail = Search::get_domain_detail($request->domain);
+        $breach = json_decode($domain_detail[0]->breach_info);
+        $array = get_object_vars($breach);
+        $data['breach_info'] = get_object_vars($array[$request->page]);
+        $data['index'] = $request->page;
+
+        return response()->json($data);
+    }
+
+    public function get_emails_by_pagination(Request $request) {
+        $emails = Search::get_domain_emails($request->domain);
+        $emails = explode(',', $emails[0]->colleague_emails);
+        $total_count = count($emails) - 1;
+
+        $data['html'] = '';
+        $emails = array_slice($emails, 51 * $request->page + 1, ($request->page + 1) * 51);
+
+        $data['start'] = 51 * $request->page + 1;
+        $data['end'] = 51 * $request->page + count($emails);
+        
+        foreach($emails as $email) {
+            if(trim($email) == '') continue;
+            
+            $data['html'] .= '<div class="col-lg-4 col-md-6">
+                                <div class="form-check">
+                                    <label class="form-check-label ellipsis" for="">
+                                        <input type="checkbox" class="form-check-input" name="sel_email[]" value="' . $email . '">' . $email . '
+                                    </label>
+                                </div>
+                            </div>';
+        }
+
+        if($total_count > ($request->page + 1) * 51) {
+            $data['next'] = $request->page + 1;
+        }
+        
+        $data['page'] = $request->page * 1;
 
         return response()->json($data);
     }
