@@ -318,16 +318,14 @@ h6 {
 }
 .faq-upload .add-tab {
     max-width: 100%;
-}
-
-.faq-accordian {
     color: white;
-    cursor: pointer;
+    cursor: pointer !important;
     padding: 0;
     border: none;
     outline: none;
     transition: 0.4s;
 }
+
 .faq-active,
 .faq-accordian:hover {
     background-color: #ccc;
@@ -385,6 +383,17 @@ h6 {
     cursor: pointer !important;
 }
 
+.domain-list .form-check input:hover,
+.domain-list .form-check label:hover {
+    color: #009683 !important;
+    font-weight: bolder !important;
+}
+
+.domain-list .form-check label.active {
+    color: #009683 !important;
+    font-weight: bolder !important;
+}
+
 p.pagination-button:hover {
     color: #6fc7bc !important;
 }
@@ -421,4 +430,31 @@ p.pagination-button.disabled {
 .disabled {
     color: #97999b !important;
     cursor: not-allowed;
+}
+
+.faq-btns {
+    margin-left: -32px;
+    padding-left: 30px;
+}
+
+@media (max-width: 1199px) {
+    .faq-btns {
+        margin-left: 0px !important;
+        padding-left: 15px !important;
+    }
+}
+
+.nav-link.active {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 0.375rem;
+    background: #f6f9fc;
+}
+
+.nav-link.active i,
+.nav-link.active span {
+    color: #009683 !important;
+    font-weight: bolder !important;
 }

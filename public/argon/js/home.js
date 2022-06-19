@@ -22,6 +22,8 @@ $(function () {
         get_by_domain(domain);
     });
 
+    check_selected_domain();
+    
     $('.domain-list').delegate('input[type=radio]', 'click', function() {
         var domain = $(this).val();
         $(this).prop('checked', true);
@@ -55,7 +57,7 @@ $(function () {
         }
     });
 
-    $('.email-pane label.form-check-label').on('click', function () {
+    $('.breach-panel').delegate('.email-pane label.form-check-label', 'click', function() {
         if ($(this).find('input').prop('checked') == true) {
             $(this).find('input').prop('checked', false);
         } else {
@@ -63,7 +65,7 @@ $(function () {
         }
     });
 
-    $('.email-pane .form-check-input').on('click', function () {
+    $('.breach-panel').delegate('.email-pane label.form-check-label', 'click', function() {
         if ($(this).prop('checked') == true) {
             $(this).prop('checked', false);
         } else {
@@ -71,7 +73,7 @@ $(function () {
         }
     });
 
-    $('#select-all').on('change', function () {
+    $('.breach-panel').delegate('#select-all', 'change', function() {
         if ($(this).is(':checked')) {
             $('.email-pane label.form-check-label input').prop('checked', true);
         } else {
@@ -327,6 +329,7 @@ function get_by_domain(domain) {
             $('#selected_domain').val(resp.selected);
 
             setDomailListHeight();
+            check_selected_domain();
         }
     });
 }
@@ -413,4 +416,14 @@ function get_emails_by_pagination(page) {
 
 function setDomailListHeight() {
     $('.main-card .card-col:first-child .inner-card').css('maxHeight', ($('.breach-panel .inner-card').height() + 15));
+}
+
+function check_selected_domain() {
+    $('.domain-list .form-check .form-check-input').each(function() {
+        if($(this).is(':checked')) {
+            $(this).next().addClass('active');
+        } else {
+            $(this).next().removeClass('active');
+        }
+    });
 }

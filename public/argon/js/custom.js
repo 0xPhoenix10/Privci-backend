@@ -12,35 +12,17 @@ $('.breach-panel').delegate('button.accordion', 'click', function() {
         panel.css('maxHeight', '');
     }
 });
-// var acc = document.getElementsByClassName("accordion");
-// var i;
 
-// for (i = 0; i < acc.length; i++) {
-//     acc[i].addEventListener("click", function () {
-//         this.classList.toggle("active");
-//         var panel = this.nextElementSibling;
-//         if (panel.style.maxHeight) {
-//             panel.style.maxHeight = null;
-//         } else {
-//             panel.style.maxHeight = panel.scrollHeight + "px";
-//         }
-//     });
-// }
+$('.faq-upload .add-tab').on('click', function() {
+    $(this).toggleClass('faq-active');
+    var panel = $('.faq-panel');
 
-var acc = document.getElementsByClassName("faq-accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-        this.classList.toggle("faq-active");
-        var panel = document.getElementsByClassName("faq-panel")[0];
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-    });
-}
+    if(panel.css('maxHeight') == '0px') {
+        panel.css('maxHeight', panel.prop('scrollHeight') + 'px');
+    } else {
+        panel.css('maxHeight', '');
+    }
+});
 
 function onAddDocument() {
     var question = document.getElementById("doc_question");

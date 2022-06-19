@@ -1,3 +1,5 @@
+var blockHtml = '<div style="text-align: center; color: #009683"><h1 style="font-size: 70px">Searching...</h1><br><p><i class="fa-solid fa-radar" style="font-size: 50px;"></i></p><br><p style="font-size: 25px">Please Wait!</p></div>';
+
 $(function() {
     $('.summary-show').each(function() {
         var html = $(this).text();
@@ -23,7 +25,7 @@ $('#search-btn').on('click', function () {
         if (search_val == "") {
             swal.fire({
                 title: "Search by Email",
-                text: "Please enter Email address",
+                text: "Please enter Email address!",
                 type: 'warning',
                 icon: "warning",
                 dangerMode: true,
@@ -33,13 +35,39 @@ $('#search-btn').on('click', function () {
 
             return;
         }
+
+        if (!validateEmail(search_val)) {
+            swal.fire({
+                title: "Search by Email",
+                text: "Wrong email format!",
+                type: 'warning',
+                icon: "warning",
+                dangerMode: true,
+                confirmButtonColor: "#009683",
+                confirmButtonText: 'OK'
+            });
+
+            return;
+        }
+
+        $.blockUI({ 
+            css: { 
+                border: 'none', 
+                padding: '15px', 
+                width: '40%',
+                backgroundColor: 'none', 
+                opacity: .5, 
+                color: '#fff' 
+            },
+            message: blockHtml 
+        }); 
 
         search_email(search_val);
     } else {
         if (search_val == "") {
             swal.fire({
                 title: "Search by Domain",
-                text: "Please enter Domain",
+                text: "Please enter domain!",
                 type: 'warning',
                 icon: "warning",
                 dangerMode: true,
@@ -49,6 +77,32 @@ $('#search-btn').on('click', function () {
 
             return;
         }
+
+        if(!validateDomain(search_val)) {
+            swal.fire({
+                title: "Search by Domain",
+                text: "Wrong domain format!",
+                type: 'warning',
+                icon: "warning",
+                dangerMode: true,
+                confirmButtonColor: "#009683",
+                confirmButtonText: 'OK'
+            });
+
+            return;
+        }
+
+        $.blockUI({ 
+            css: { 
+                border: 'none', 
+                padding: '15px', 
+                width: '40%',
+                backgroundColor: 'none', 
+                opacity: .5, 
+                color: '#fff' 
+            },
+            message: blockHtml 
+        });
 
         $.ajax({
             url: '/searchdomain',
@@ -59,7 +113,11 @@ $('#search-btn').on('click', function () {
             success: function (resp) {
                 if ($.isEmptyObject(resp.result)) {
                     $('.search-intro').hide();
-                    $('.no-result').show();
+
+                    var html = '';
+                    html += '<div class="text-center mt-5 search-title"><h2 class="text-light">Search result(s) for: <span class="search-value">' + search_val + '</span></h2></div>';
+                    html += '<div class="no-result"><div class="col-xl-12 mb-4"><div class="card-header rounded text-center theme-background-color"><h2 class="m-0 mr-2 text-light">No results found! </h3></div></div></div>';
+                    $('.search-content').html(html);
                 } else {
                     var html = '';
                     html += '<div class="text-center mt-5 search-title"><h2 class="text-light">Search result(s) for: <span class="search-value">' + search_val + '</span></h2></div>';
@@ -76,6 +134,7 @@ $('#search-btn').on('click', function () {
                     $('.search-intro').hide();
                     $('.no-result').hide();
                 }
+                $.unblockUI();
             }
         });
     }
@@ -92,7 +151,11 @@ function search_email(email_list) {
         success: function (resp) {
             if (resp.result[0].source == '') {
                 $('.search-intro').hide();
-                $('.no-result').show();
+
+                var html = '';
+                html += '<div class="text-center mt-5 search-title"><h2 class="text-light">Search result(s) for: <span class="search-value">' + email_list + '</span></h2></div>';
+                html += '<div class="no-result"><div class="col-xl-12 mb-4"><div class="card-header rounded text-center theme-background-color"><h2 class="m-0 mr-2 text-light">No results found! </h3></div></div></div>';
+                $('.search-content').html(html);
             } else {
                 var html = '';
                 html += '<div class="text-center mt-5 search-title"><h2 class="text-light">Search result(s) for: <span class="search-value">' + email_list + '</span></h2></div>';
@@ -111,6 +174,25 @@ function search_email(email_list) {
                 $('.search-intro').hide();
                 $('.no-result').hide();
             }
+            $.unblockUI();
         }
     });
+}
+
+function validateEmail(email) {
+    var filter = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+    if (filter.test(email)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validateDomain(domain) {
+    var filter = /^([A-Z0-9a-z])+\.([a-z])+/;
+    if (filter.test(domain)) {
+        return true;
+    } else {
+        return false;
+    }
 }

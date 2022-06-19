@@ -12091,12 +12091,12 @@ button.bg-darker:focus {
 }
 
 .text-primary {
-    color: #5e72e4 !important;
+    color: #009683 !important;
 }
 
 a.text-primary:hover,
 a.text-primary:focus {
-    color: #324cdd !important;
+    color: #6fc7bc !important;
 }
 
 .text-secondary {
@@ -16279,7 +16279,7 @@ textarea[resize="horizontal"] {
         bottom: 0.25rem;
         left: 0;
         border-bottom: 0;
-        border-left: 2px solid #5e72e4;
+        border-left: 2px solid #009683;
     }
     .navbar-vertical.navbar-expand-md .navbar-nav .nav .nav-link {
         padding-left: 3.75rem;
