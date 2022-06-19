@@ -79,7 +79,7 @@
                 @php
                 $url = URL::current();
                 @endphp
-                <li class="nav-item">
+                <li class="nav-item mb-2">
                     <a class="nav-link {{str_contains($url, 'home') ? 'active' : ''}}" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-light"></i> <span class="text-light">{{ __('Home') }}</span>
                     </a>
