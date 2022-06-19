@@ -458,3 +458,18 @@ p.pagination-button.disabled {
     color: #009683 !important;
     font-weight: bolder !important;
 }
+
+.nav-link:hover {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 0.375rem;
+    background: #f6f9fc;
+}
+
+.nav-link:hover i,
+.nav-link:hover span {
+    color: #009683 !important;
+    font-weight: bolder !important;
+}
