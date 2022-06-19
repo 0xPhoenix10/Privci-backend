@@ -83,7 +83,6 @@ h6 {
 .main-card .card-col:first-child .inner-card {
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: 750px;
 }
 
 .main-card .card-col:first-child .inner-card::-webkit-scrollbar {
@@ -152,7 +151,7 @@ h6 {
 
 .inner-card .accordian-container .accordion {
     background-color: transparent;
-    color: white;
+    color: #939393;
     cursor: pointer;
     padding: 0;
     border: none;
@@ -164,6 +163,10 @@ h6 {
     position: relative;
     top: 2px;
     font-size: 20px;
+}
+
+.inner-card .accordian-container .panel {
+    margin: 2px 0px !important;
 }
 
 .icon-empty {
@@ -362,4 +365,60 @@ h6 {
     color: #009683 !important;
 }
 
-/* User page */
+/* landing page */
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #009683 !important;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #009683 !important;
+}
+
+.breach-refer {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.domain-list .form-check input,
+.domain-list .form-check label {
+    cursor: pointer !important;
+}
+
+p.pagination-button:hover {
+    color: #6fc7bc !important;
+}
+
+p.pagination-button.disabled:hover,
+p.pagination-button.disabled {
+    color: #97999b !important;
+    cursor: not-allowed;
+}
+
+.breach-pagination-btn:hover {
+    color: #009683 !important;
+    text-decoration: underline;
+}
+
+.breach-pagination-btn.page-selected:hover {
+    color: #009683 !important;
+    text-decoration: none !important;
+}
+
+.breach-pagination-btn.page-selected {
+    cursor: not-allowed;
+}
+
+.email-pagination-button {
+    cursor: pointer;
+}
+
+.email-pagination-button:hover {
+    color: #6fc7bc !important;
+}
+
+.disabled:hover,
+.disabled {
+    color: #97999b !important;
+    cursor: not-allowed;
+}

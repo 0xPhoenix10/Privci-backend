@@ -2,21 +2,30 @@ $(function() {
     $('.main-container').css('minHeight', $(window).height());
 });
 
-var acc = document.getElementsByClassName("accordion");
-var i;
+$('.breach-panel').delegate('button.accordion', 'click', function() {
+    $(this).toggleClass('active');
+    var panel = $(this).next();
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        console.log(panel);
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-    });
-}
+    if(panel.css('maxHeight') == '0px') {
+        panel.css('maxHeight', panel.prop('scrollHeight') + 'px');
+    } else {
+        panel.css('maxHeight', '');
+    }
+});
+// var acc = document.getElementsByClassName("accordion");
+// var i;
+
+// for (i = 0; i < acc.length; i++) {
+//     acc[i].addEventListener("click", function () {
+//         this.classList.toggle("active");
+//         var panel = this.nextElementSibling;
+//         if (panel.style.maxHeight) {
+//             panel.style.maxHeight = null;
+//         } else {
+//             panel.style.maxHeight = panel.scrollHeight + "px";
+//         }
+//     });
+// }
 
 var acc = document.getElementsByClassName("faq-accordion");
 var i;

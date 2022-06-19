@@ -22,11 +22,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('get_by_domain/{key}', [App\Http\Controllers\HomeController::class, 'get_by_domain']);
+Route::get('get_by_domain', [App\Http\Controllers\HomeController::class, 'get_by_domain']);
+Route::get('get_breach_info', [App\Http\Controllers\HomeController::class, 'get_breach_info']);
 Route::get('sort_domain', [App\Http\Controllers\HomeController::class, 'sort_domain']);
 Route::get('sort_email', [App\Http\Controllers\HomeController::class, 'sort_email']);
 Route::get('/search_by_keyword', [App\Http\Controllers\HomeController::class, 'search_by_keyword']);
 Route::get('/search_by_email', [App\Http\Controllers\HomeController::class, 'search_by_email']);
+Route::get('/get_emails_by_pagination', [App\Http\Controllers\HomeController::class, 'get_emails_by_pagination']);
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 

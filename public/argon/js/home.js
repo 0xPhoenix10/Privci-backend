@@ -1,6 +1,12 @@
 var selected_emails = [];
 
 $(function () {
+    setDomailListHeight();    
+
+    if($('.breach-pagination-btn').length == 1) {
+        $('.breach-next').addClass('disabled');
+    }
+
     // selected domain select
     $('.domain-list .form-check').each(function () {
         if ($(this).find('input[type=radio]').val() == $('#selected_domain').val()) {
@@ -11,23 +17,41 @@ $(function () {
     // when select domain then go to /get_by_domain
     $('.domain-list').delegate('label.form-check-label', 'click', function() {
         var domain = $(this).prev().val();
+        $(this).prev().prop('checked', true);
 
-        location.href = '/get_by_domain/' + domain;
+        get_by_domain(domain);
     });
 
     $('.domain-list').delegate('input[type=radio]', 'click', function() {
         var domain = $(this).val();
+        $(this).prop('checked', true);
 
-        location.href = '/get_by_domain/' + domain;
+        get_by_domain(domain);
     });
 
-    $('button.accordion').on('click', function () {
+    $('.breach-panel').delegate('button.accordion', 'click', function () {
         if ($(this).find('i').hasClass('fa-caret-down')) {
             $(this).find('i').removeClass('fa-caret-down');
             $(this).find('i').addClass('fa-caret-right');
         } else if ($(this).find('i').hasClass('fa-caret-right')) {
             $(this).find('i').removeClass('fa-caret-right');
             $(this).find('i').addClass('fa-caret-down');
+        }
+    });
+
+    $('.breach-panel').delegate('.breach-pagination-btn', 'click', function() {
+        if(!$(this).hasClass('page-selected')) {
+            breach_pagination($(this).data('index'));
+        }
+    });
+
+    $('.breach-panel').delegate('p.pagination-button', 'click', function() {
+        if(!$(this).hasClass('disabled')) {
+            if($(this).hasClass('breach-previous')) {
+                breach_pagination($('.breach-pagination-btn.page-selected').data('index') * 1 - 1);    
+            } else {
+                breach_pagination($('.breach-pagination-btn.page-selected').data('index') * 1 + 1);    
+            }
         }
     });
 
@@ -158,9 +182,12 @@ $(function () {
                     var html = '<h4 class="mb-2 text-white">Users that may have submit or used their company email on <a class="theme-color" href="' + "https://" + resp.domain + '">' + resp.domain + '</a></h4>';
                     html += '<div class="row">';
                     html += resp.html;
+                 
                     html += '</div>';
                     $('.email-pane').html(html);    
                 }
+
+                setDomailListHeight(); 
             }
         });
     });
@@ -170,6 +197,12 @@ $(function () {
             $('#search-domain').prop('placeholder', 'Enter email');
         } else {
             $('#search-domain').prop('placeholder', 'Enter domain');
+        }
+    });
+
+    $('.breach-panel').delegate('.email-pagination-button', 'click', function() {
+        if(!$(this).hasClass('disabled')) {
+            get_emails_by_pagination($(this).data('index'));
         }
     });
 
@@ -197,7 +230,17 @@ $(function () {
 
         if($check == 1) {
             var send_emails = selected_emails.join(';');
-            var mailto = "mailto:" + first_email + "?cc=" + send_emails;
+            var body = "";
+            body += "Dear Colleague";
+            body += "<br/><br/>There is a possibility that the internet company <a href='https://securmind.com'>securmind.com</a>, to which you may have submitted personal information, such as filling out a form in the past, opening an account, or making a purchase, may have been involved in a data breach.";
+            body += "<br><br>As a result, we recommend you take immediate action, including:";
+            body += "<br>✔ Change your password to something strong, if you have an account with the website . Click here <add link> to review our password policy.";
+            body += "<br>✔ Set up two-factor authentication. If the website provides such capability.";
+            body += "<br>✔ Make sure you don't use your company email's password on this or any other site - a unique password for each site.";
+            body += "<br><br>Reference: <please add url to reference>";
+            body += "<br><br><br>Best Regards,";
+            body += "<br><Please add your email signature>";
+            var mailto = "mailto:" + first_email + "?cc=" + send_emails + "&body=" + body;
 
             location.href = mailto;
         }
@@ -257,7 +300,7 @@ function email_select_check() {
     if(selected_emails.length == 0) {
         swal.fire({
             title: "No email selected!",
-            text: "You must select an email to use this feature",
+            text: "Note: You must select an email to use these features",
             type: 'warning',
             icon: "warning",
             dangerMode: true,
@@ -271,3 +314,103 @@ function email_select_check() {
     return 1;
 }
 
+function get_by_domain(domain) {
+    $.ajax({
+        url: '/get_by_domain',
+        data: {
+            domain: domain
+        },
+        type: 'GET',
+        dataType: 'json',
+        success: function(resp) {
+            $('.breach-panel .inner-card').html(resp.html);
+            $('#selected_domain').val(resp.selected);
+
+            setDomailListHeight();
+        }
+    });
+}
+
+function breach_pagination(page) {
+    $.ajax({
+        url: '/get_breach_info',
+        data: {
+            page: page,
+            domain: $('#selected_domain').val()
+        },
+        type: 'GET',
+        dataType: 'json',
+        success: function(resp) {
+            $('.breach-date').text(resp.breach_info['breach date']);
+            $('.breach-no-of-records').text(resp.breach_info['breach summary']);
+            $('.breach-summary').text(resp.breach_info['no of records']);
+            $('.breach-reference').text(resp.breach_info['reference']);
+            $('.breach-reference').attr('href', resp.breach_info['reference']);
+
+            $('.breach-pagination-btn').each(function() {
+                $(this).removeClass('page-selected');
+
+                if($(this).data('index') == resp.index) {
+                    $(this).addClass('page-selected');
+                }
+            });
+
+            if(resp.index == 0) {
+                if(!$('.breach-previous').hasClass('disabled')) {
+                    $('.breach-previous').addClass('disabled');
+                }
+                $('.breach-next').removeClass('disabled');
+            } else if(resp.index == $('.breach-pagination-btn').length - 1) {
+                if(!$('.breach-next').hasClass('disabled')) {
+                    $('.breach-next').addClass('disabled');
+                }
+                $('.breach-previous').removeClass('disabled');
+            } else {
+                $('p.pagination-button').removeClass('disabled');
+            }
+
+            var count = resp.index*1 + 1;
+            $('.page-show').text(count + ' of ' + $('.breach-pagination-btn').length);
+
+            setDomailListHeight(); 
+        }
+    });
+}
+
+function get_emails_by_pagination(page) {
+    $.ajax({
+        url: '/get_emails_by_pagination',
+        data: {
+            page: page,
+            domain: $('#selected_domain').val()
+        },
+        type: 'GET',
+        dataType: 'json',
+        success: function(resp) {
+            $('.email-list').html(resp.html);
+            $('.start').text(resp.start);
+            $('.end').text(resp.end);
+
+            $('.email-pagination-button.next').addClass('disabled');
+
+            if(resp.next) {
+                $('.email-pagination-button.next').attr("data-index", resp.next);
+                $('.email-pagination-button.previous').attr("data-index", resp.page);
+                $('.email-pagination-button.next').removeClass('disabled');
+            }
+
+            if(resp.page == 0) {
+                $('.email-pagination-button.previous').addClass('disabled');
+                $('.email-pagination-button.next').removeClass('disabled');
+            } else {
+                $('.email-pagination-button.previous').removeClass('disabled');
+            }
+
+            setDomailListHeight(); 
+        }
+    });
+}
+
+function setDomailListHeight() {
+    $('.main-card .card-col:first-child .inner-card').css('maxHeight', ($('.breach-panel .inner-card').height() + 15));
+}
