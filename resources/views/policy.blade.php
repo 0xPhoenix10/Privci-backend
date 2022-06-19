@@ -9,21 +9,21 @@
             your data protection policy</h4>
         <p class="upload-note mb-5"><strong>Note:</strong> Content will only be available to colleagues within your
             organisation</p>
-        <div class="d-flex align-items-center mb-4">
+        <div class="d-flex align-items-center mb-2">
             <input class="col-md-8 mr-3 form-control" type="file" id="formFile" accept=".pdf, .doc, .docx, .txt">
-            <input type="button" class="btn theme-background-color ml-2 mr-2" value="Upload and Extract Content"
+            <input type="button" class="btn theme-background-color ml-2 mr-2" value="Upload to index content"
                 name="upload_content" onclick="analyze_uploaded_file()" id="analyze_file">
             <p class="upload-note">Supported:<br>pdf, doc, docx, text</p>
         </div>
-        <div class="d-flex align-items-center">
+        <!-- <div class="d-flex align-items-center">
             <h4 class="text-light mr-2">Or extract from a link: </h4>
             <input type="url" class="col-4 form-control" id="email" placeholder="Add link to extract..." name="url">
             <button class="btn theme-background-color ml-2 mr-2">Extract</button>
             <p class="upload-note">Supported:<br>pdf, html</p>
-        </div>
+        </div> -->
     </div>
 
-    <textarea name="policy_content" id="policy_content" rows="10" class="col-xl-12 mt-4 rounded mb-2"
+    <textarea name="policy_content" id="policy_content" rows="10" class="col-xl-12 rounded mb-2"
         placeholder="Copy and paste policy text..."></textarea>
 
     <div class="d-flex align-items-center mb-3">
@@ -31,12 +31,15 @@
         <input type="text" class="col form-control" id="policy_title" placeholder="Start typing..." name="policy_title">
     </div>
     <div class="d-flex align-items-center mb-5">
-        <h5 class="mr-3 text-light">Adding a link to the original document will allow users to access it from the
-            extension: </h5>
+        <div>
+            <h4 class="mr-3 text-light">Add a link to the original document: </h4>
+            <span class="text-primary" style="font-size: 12px">Allow direct access from the extension</span>
+        </div>
         <input type="text" class="col form-control" id="policy_link" placeholder="Paste link..." name="policy_link">
     </div>
     <div class="d-flex flex-row-reverse align-items-center mb-6">
         <button class="btn theme-background-color ml-3" id="save_btn">Save Upload</button>
+        <button class="btn bg-gray ml-3" id="cancel_btn" style="display: none;">Cancel</button>
         <p class="upload-note">Please make sure the extract has been properly parsed before saving</p>
     </div>
     @php
@@ -44,29 +47,9 @@
     @endphp
     <div class="faq-accordian-container">
         <div class="faq-upload">
-            <h2 class="text-light mr-3">Documents Uploaded</h2>
-            <div class="col add-tab border-dark text-light p-2 faq-accordion bg-dark">Add a FAQ (up to 5 FAQ may be
-                added)</div>
+            <h2 class="text-light">Documents Uploaded</h2>
         </div>
-        <div class="faq-panel bg-dark">
-            <h4>A list of Frequently Asked Questions will be added to the extension and will be visible to colleagues
-                within your organization</h4>
-            <p>You may want to answer questioins regarding data DOs and DONTs, data sharing procedures, an the contact
-                details of your Data Protection Officer.</p>
-            <div class="d-flex align-items-center mb-1">
-                <h3 class="col-2">Questions:</h3>
-                <input type="text" class="col-8 form-control" placeholder="Maximum of 60 characters..."
-                    id="doc_question" value="">
-            </div>
-            <div class="d-flex mb-2">
-                <h3 class="col-2">Answer:</h3>
-                <textarea name="" cols="" rows="5" class="col-8 form-control"
-                    placeholder="Maximum of 1000 characters..." id="doc_answer"></textarea>
-                <div class="col-2 d-flex align-items-end">
-                    <button class="btn theme-background-color" id="save_faq_btn" onClick="onAddFaq()">Add</button>
-                </div>
-            </div>
-        </div>
+
         <div class="mt-2 mb-3 pl-2" id="documents_uploaded">
             @foreach($policy as $item)
             <div class="d-flex align-items-center theme-color">
@@ -79,11 +62,36 @@
             @endforeach
         </div>
     </div>
-    @if(!empty($faq))
+
     <div>
         <div class="faq-upload">
-            <h2>FAQs Added</h2>
+            <h2 class="text-light mr-3">FAQs Added</h2>
+            <div class="ml-2 col add-tab border-dark text-light p-2 faq-accordion bg-dark">Add a FAQ (up to 5 FAQ may be
+                added)</div>
         </div>
+        <div class="faq-panel bg-dark">
+            <h3>A list of Frequently Asked Questions will be added to the extension and will be visible to colleagues
+                within your organization</h3>
+            <p class="mb-3" style="font-size: 14px">You may want to answer questioins regarding data DOs and DONTs, data
+                sharing
+                procedures, an the contact
+                details of your Data Protection Officer.</p>
+            <div class="row mb-1">
+                <h3 class="col-xl-2 mb-1">Questions:</h3>
+                <input type="text" class="ml-3 mr-3 col-xl-7 form-control" placeholder="Maximum of 60 characters..."
+                    id="doc_question" value="">
+            </div>
+            <div class="row mb-2">
+                <h3 class="col-xl-2 mb-1">Answer:</h3>
+                <textarea name="" cols="" rows="5" class="ml-3 mr-3 col-xl-7 form-control mb-2"
+                    placeholder="Maximum of 1000 characters..." id="doc_answer"></textarea>
+                <div class="col-xl-3 d-flex align-items-end mb-2 faq-btns">
+                    <button class="btn theme-background-color" id="save_faq_btn" onClick="onAddFaq()">Add</button>
+                    <button class="btn bg-gray" id="cancel_faq_btn" style="display: none">Cancel</button>
+                </div>
+            </div>
+        </div>
+        @if(!empty($faq))
         <div class="mt-2 mb-3 pl-2">
             @foreach($faq as $item1)
             <div class="d-flex align-items-center theme-color">
@@ -95,8 +103,9 @@
             </div>
             @endforeach
         </div>
+        @endif
     </div>
-    @endif
+
     @php
     }
     @endphp

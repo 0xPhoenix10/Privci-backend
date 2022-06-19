@@ -40,6 +40,23 @@ function analyze_uploaded_file() {
     }
 }
 
+$('#cancel_btn').on('click', function() {
+    $('#policy_content').val('');
+    $('#policy_title').val('');
+    $('#policy_link').val('');
+    $('#policy_edit_number').val(0);
+    $('#save_btn').html('Save Upload');
+    $('#cancel_btn').hide();
+});
+
+$('#cancel_faq_btn').on('click', function() {
+    $('#doc_question').val('');
+    $('#doc_answer').val('');
+    $('#faq_edit_number').val(0);
+    $('#save_faq_btn').html('Add');
+    $('#cancel_faq_btn').hide();
+});
+
 $('#save_btn').on('click', function () {
     var content = $('#policy_content').val();
     var title = $('#policy_title').val();
@@ -130,6 +147,7 @@ function onEditDoc(pid) {
             $('#policy_title').val(resp.policy.title);
             $('#policy_link').val(resp.policy.link);
             $('#save_btn').html('Edit Policy');
+            $('#cancel_btn').show();
             $('#policy_edit_number').val(resp.policy.id);
 
             $('#policy_content').focus();
@@ -308,6 +326,8 @@ function onAddFaq() {
 }
 
 function onEditFaq(fid) {
+    $('.faq-upload .add-tab').trigger('click');
+
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         url: '/edit_faq',
@@ -321,6 +341,7 @@ function onEditFaq(fid) {
             $('#doc_question').val(resp.faq.question);
             $('#doc_answer').val(resp.faq.answer);
             $('#save_faq_btn').html('Edit Faq');
+            $('#cancel_faq_btn').show();
             $('#faq_edit_number').val(resp.faq.id);
 
             $('#doc_question').focus();

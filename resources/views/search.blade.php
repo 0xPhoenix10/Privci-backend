@@ -46,6 +46,15 @@
         </div>
         @php
         else:
+        @endphp
+        <div class="no-result" style="display:none;">
+            <div class="col-xl-12 mb-4">
+                <div class="card-header rounded text-center theme-background-color">
+                    <h2 class="m-0 mr-2 text-light">No results found! </h3>
+                </div>
+            </div>
+        </div>
+        @php
         foreach($data->result as $result):
         @endphp
         <div class="text-center mt-5 search-title" style="display: block">
@@ -100,13 +109,7 @@
         endforeach;
         @endphp
 
-        <div class="no-result" style="display:none;">
-            <div class="col-xl-12 mb-4">
-                <div class="card-header rounded text-center theme-background-color">
-                    <h2 class="m-0 mr-2 text-light">No results found! </h3>
-                </div>
-            </div>
-        </div>
+
         @php
         endif;
         endif;
