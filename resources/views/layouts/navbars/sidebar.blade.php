@@ -84,18 +84,18 @@
                         <i class="ni ni-tv-2 text-light"></i> <span class="text-light">{{ __('Home') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mb-2">
                     <a class="nav-link {{str_contains($url, 'search') ? 'active' : ''}}" href="{{ route('search') }}">
                         <i class="fa fa-search text-light"></i> <span class="text-light">{{ __('Search') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mb-2">
                     <a class="nav-link {{str_contains($url, 'policy') ? 'active' : ''}}" href="{{ route('policy') }}">
                         <i class="ni ni-cloud-upload-96 text-light"></i> <span
                             class="text-light">{{ __('Policy Upload') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mb-2">
                     <a class="nav-link {{str_contains($url, 'support') ? 'active' : ''}}" href="{{ route('support') }}">
                         <i class="ni ni-chat-round text-light"></i> <span class="text-light">{{ __('Support') }}</span>
                     </a>
@@ -104,8 +104,9 @@
                 @php
                 if(auth()->user()->id == 1):
                 @endphp
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.index') }}">
+                <li class="nav-item mb-2">
+                    <a class="nav-link {{str_contains($url, 'support') ? 'active' : ''}}"
+                        href="{{ route('user.index') }}">
                         <i class="fa-solid fa-users text-light"></i> <span
                             class="text-light">{{ __('User Manage') }}</span>
                     </a>
