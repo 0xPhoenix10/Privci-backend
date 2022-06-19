@@ -444,7 +444,7 @@ p.pagination-button.disabled {
     }
 }
 
-.nav-link.active {
+#sidenav-collapse-main .nav-link.active {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
     padding-right: 1rem;
@@ -453,13 +453,13 @@ p.pagination-button.disabled {
     background: #f6f9fc;
 }
 
-.nav-link.active i,
-.nav-link.active span {
+#sidenav-collapse-main .nav-link.active i,
+#sidenav-collapse-main .nav-link.active span {
     color: #009683 !important;
     font-weight: bolder !important;
 }
 
-.nav-link:hover {
+#sidenav-collapse-main .nav-link:hover {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
     padding-right: 1rem;
@@ -468,8 +468,13 @@ p.pagination-button.disabled {
     background: #f6f9fc;
 }
 
-.nav-link:hover i,
-.nav-link:hover span {
+#sidenav-collapse-main .nav-link:hover i,
+#sidenav-collapse-main .nav-link:hover span {
     color: #009683 !important;
     font-weight: bolder !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #a9ebe4 !important;
 }
