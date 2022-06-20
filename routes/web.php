@@ -28,7 +28,7 @@ Route::get('sort_domain', [App\Http\Controllers\HomeController::class, 'sort_dom
 Route::get('sort_email', [App\Http\Controllers\HomeController::class, 'sort_email']);
 Route::get('/search_by_keyword', [App\Http\Controllers\HomeController::class, 'search_by_keyword']);
 Route::get('/search_by_email', [App\Http\Controllers\HomeController::class, 'search_by_email']);
-Route::get('/get_emails_by_pagination', [App\Http\Controllers\HomeController::class, 'get_emails_by_pagination']);
+// Route::get('/get_emails_by_pagination', [App\Http\Controllers\HomeController::class, 'get_emails_by_pagination']);
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
