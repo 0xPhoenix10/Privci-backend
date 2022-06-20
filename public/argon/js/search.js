@@ -184,7 +184,7 @@ function search_email(email_list, type) {
                 if($.isEmptyObject(resp.result)) {
                     swal.fire({
                         title: "Search by Email",
-                        text: "Please enter valid Email!",
+                        text: "Wrong Email!",
                         type: 'warning',
                         icon: "warning",
                         dangerMode: true,
