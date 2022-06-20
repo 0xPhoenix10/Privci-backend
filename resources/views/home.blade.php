@@ -226,12 +226,15 @@
 
                 <div class="p-0 mb-2 d-flex justify-content-between">
                     <div class="col-8 p-0 d-flex m-0 align-items-center">
-                        <h4 class="text-light mr-3">Search email:</h4>
-                        <div class="col pl-0 d-flex align-items-center bg-white rounded">
+                        <h4 class="text-light mr-1">Users that may have submit or used their company email on </h4>
+                        <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
+                            {{$domain_detail->monitoring_domain}}
+                        </a>
+                        <!-- <div class="col pl-0 d-flex align-items-center bg-white rounded">
                             <input type="text" class="col rounded border-0" placeholder="Enter an email address..."
                                 id="search-email">
                             <i class="col-1 fa fa-search"></i>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="form-check d-flex align-items-center">
                         <label class="form-check-label text-light" for="select-all"> Select all on this page </label>
@@ -240,15 +243,15 @@
                 </div>
                 <form action="/searchemail" method="GET" id="search-email-form" target="_blank">
                     <div class="pl-3 pt-2 medium-card rounded text-light email-pane">
-                        <h4 class="mb-2 text-light">Users that may have submit or used their company email on
+                        <!-- <h4 class="mb-2 text-light">Users that may have submit or used their company email on
                             <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
                                 {{$domain_detail->monitoring_domain}}
                             </a>
-                        </h4>
+                        </h4> -->
 
                         @php
-                        $total_email_count = count($domain_emails) > 51 ? 51 : count($domain_emails);
-                        $page_length = count($domain_emails) > 51 ? ceil(count($domain_emails) / 51) : 1;
+                        $total_email_count = count($domain_emails) > 30 ? 30 : count($domain_emails);
+                        $page_length = count($domain_emails) > 30 ? ceil(count($domain_emails) / 30) : 1;
 
                         if($total_email_count == 0) $page_length = 0;
 
@@ -276,7 +279,7 @@
                         if($page_length > 0) {
                         @endphp
                         <div><span class="theme-color start"> 1</span>-<span class="theme-color end">
-                                {{$page_length > 1 ? 51 : $total_email_count-1}}</span> of <span
+                                {{$page_length > 1 ? 30 : $total_email_count-1}}</span> of <span
                                 class="theme-color">{{count($domain_emails)-1}}</span> records</div>
                         @php
                         if($page_length > 1) {

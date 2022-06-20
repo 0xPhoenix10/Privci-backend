@@ -178,32 +178,32 @@ $(function () {
         search_by_keyword(keyword, type);
     });
 
-    $('.breach-panel').delegate('#search-email', 'keyup', function() {
-        var keyword = $(this).val();
-        $.ajax({
-            url: '/search_by_email',
-            data: {
-                keyword: keyword,
-                selected: $('#selected_domain').val()
-            },
-            type: 'GET',
-            dataType: 'json',
-            success: function(resp) {
-                if(resp.no_email) {
-                    $('.email-pane').html(resp.html);    
-                } else {
-                    var html = '<h4 class="mb-2 text-white">Users that may have submit or used their company email on <a class="theme-color" href="' + "https://" + resp.domain + '">' + resp.domain + '</a></h4>';
-                    html += '<div class="row">';
-                    html += resp.html;
+    // $('.breach-panel').delegate('#search-email', 'keyup', function() {
+    //     var keyword = $(this).val();
+    //     $.ajax({
+    //         url: '/search_by_email',
+    //         data: {
+    //             keyword: keyword,
+    //             selected: $('#selected_domain').val()
+    //         },
+    //         type: 'GET',
+    //         dataType: 'json',
+    //         success: function(resp) {
+    //             if(resp.no_email) {
+    //                 $('.email-pane').html(resp.html);    
+    //             } else {
+    //                 var html = '<h4 class="mb-2 text-white">Users that may have submit or used their company email on <a class="theme-color" href="' + "https://" + resp.domain + '">' + resp.domain + '</a></h4>';
+    //                 html += '<div class="row">';
+    //                 html += resp.html;
                  
-                    html += '</div>';
-                    $('.email-pane').html(html);    
-                }
+    //                 html += '</div>';
+    //                 $('.email-pane').html(html);    
+    //             }
 
-                setDomailListHeight(); 
-            }
-        });
-    });
+    //             setDomailListHeight(); 
+    //         }
+    //     });
+    // });
 
     $('#select-search-type').on('change', function() {
         if($(this).val() == 'email') {

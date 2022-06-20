@@ -210,10 +210,11 @@ class HomeController extends Controller
         $total_count = count($emails) - 1;
 
         $data['html'] = '';
-        $emails = array_slice($emails, 51 * $request->page + 1, ($request->page + 1) * 51);
+        $emails = array_slice($emails, 30 * $request->page + 1, ($request->page + 1) * 30);
 
-        $data['start'] = 51 * $request->page + 1;
-        $data['end'] = 51 * $request->page + count($emails);
+        var_dump($emails); die();
+        $data['start'] = 30 * $request->page + 1;
+        $data['end'] = 30 * $request->page + count($emails);
         
         foreach($emails as $email) {
             if(trim($email) == '') continue;
@@ -227,7 +228,7 @@ class HomeController extends Controller
                             </div>';
         }
 
-        if($total_count > ($request->page + 1) * 51) {
+        if($total_count > ($request->page + 1) * 30) {
             $data['next'] = $request->page + 1;
         }
         
