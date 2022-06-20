@@ -259,32 +259,32 @@ $(function () {
         }
     });
 
-    $('.btn-push-notify').on('click', function() {
-        $check = email_select_check();
+    // $('.btn-push-notify').on('click', function() {
+    //     $check = email_select_check();
 
-        if($check == 1) {
-            function notify(title, callback) {
+    //     if($check == 1) {
+    //         function notify(title, callback) {
 
-                var options = {
-                    type: "list",
-                    title: title,
-                    message: "Primary message to display",
-                    items: [{ title: "Item1", message: "This is item 1."},
-                            { title: "Item2", message: "This is item 2."},
-                            { title: "Item3", message: "This is item 3."}]
-                };
+    //             var options = {
+    //                 type: "list",
+    //                 title: title,
+    //                 message: "Primary message to display",
+    //                 items: [{ title: "Item1", message: "This is item 1."},
+    //                         { title: "Item2", message: "This is item 2."},
+    //                         { title: "Item3", message: "This is item 3."}]
+    //             };
             
-                // The first argument is the ID, if left blank it'll be automatically generated.
-                // The second argument is an object of options. More here: https://developer.chrome.com/extensions/notifications#type-NotificationOptions
-                return chrome.notifications.create("", options, callback);
+    //             // The first argument is the ID, if left blank it'll be automatically generated.
+    //             // The second argument is an object of options. More here: https://developer.chrome.com/extensions/notifications#type-NotificationOptions
+    //             return chrome.notifications.create("", options, callback);
             
-            }
+    //         }
             
-            notify("Testing", function(notification){
-                // Do whatever you want. Called after notification is created.
-            });
-        }
-    });
+    //         notify("Testing", function(notification){
+    //             // Do whatever you want. Called after notification is created.
+    //         });
+    //     }
+    // });
 });
 
 function search_by_keyword(keyword, type) {
@@ -356,8 +356,8 @@ function breach_pagination(page) {
         dataType: 'json',
         success: function(resp) {
             $('.breach-date').text(resp.breach_info['breach date']);
-            $('.breach-no-of-records').text(resp.breach_info['breach summary']);
-            $('.breach-summary').text(resp.breach_info['no of records']);
+            $('.breach-no-of-records').text(resp.breach_info['no of records']);
+            $('.breach-summary').text(resp.breach_info['breach summary']);
             $('.breach-reference').text(resp.breach_info['reference']);
             $('.breach-reference').attr('href', resp.breach_info['reference']);
 

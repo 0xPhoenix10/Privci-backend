@@ -13,12 +13,11 @@
                 </div>
                 <div class="d-flex">
                     <h3 class="m-0 mr-2 text-light">General Inquiries: </h3>
-                    <a class="m-0 text-light" href="http://support@Privci.io" target="_blank">support@Privci.io</a>
+                    <a class="m-0 text-light" href="mailto:support@Privci.io">support@Privci.io</a>
                 </div>
                 <div class="d-flex">
                     <h3 class="m-0 mr-2 p-0 text-light">Techinical Issues / Questions: </h3>
-                    <a class="col-6 m-0 p-0 text-light" href="http://admin@privci.com"
-                        target="_blank">admin@privci.com</a>
+                    <a class="col-6 m-0 p-0 text-light" href="mailto:admin@privci.com">admin@privci.com</a>
                 </div>
             </div>
         </div>
