@@ -311,6 +311,8 @@
                     notification</button> -->
             </div>
         </div>
+        <input type="hidden" id="next-page" value="1">
+        <input type="hidden" id="previous-page" value="0">
     </div>
 </div>
 
