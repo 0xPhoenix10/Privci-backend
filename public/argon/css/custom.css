@@ -21,6 +21,7 @@ h6 {
 
 .main-container {
     background-color: rgb(30, 31, 33);
+    min-height: 937px;
 }
 
 #navbar-collapse-main a {
@@ -185,6 +186,10 @@ h6 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.accordian-container p {
+    font-weight: 500 !important;
 }
 
 .bottom-note {

@@ -52,15 +52,17 @@
             <div class="p-2 inner-card rounded">
                 <div class="p-2 medium-card rounded text-light">
                     <div class="row theme-color">
-                        <div class="col-xl-6 d-flex">
+                        <div class="col-xl-5 d-flex">
                             <h4 class="m-0 mr-2 theme-color">Name:</h4>
                             <p class="m-0" title="{{$domain_detail->company_name}}"
                                 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                                 {{$domain_detail->company_name}}</p>
                         </div>
-                        <div class="col-xl-5 d-flex">
-                            <h4 class="m-0 mr-2 theme-color">No of breaches:</h4>
+                        <div class="col-xl-6 d-flex">
+                            @if($domain_detail->no_of_breaches > 0)
+                            <h4 class="m-0 mr-2 theme-color">No of breach(es):</h4>
                             <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
+                            @endif
                         </div>
                         <div class="col-xl-1 text-right">
                             <p class="page-show">
@@ -155,7 +157,7 @@
                         endif;
                         @endphp
                     </button>
-                    <p class="panel">
+                    <div class="panel">
                         @php
                         if($domain_detail->data_sell != "") {
                         $str = substr($domain_detail->data_sell, 3);
@@ -167,7 +169,7 @@
                         echo $string;
                         }
                         @endphp
-                    </p>
+                    </div>
                     <button class="accordion">👥 Does the website share personal information for marketing purposes?
                         @php
                         if($domain_detail->data_share != ""):
@@ -181,7 +183,7 @@
                         endif;
                         @endphp
                     </button>
-                    <p class="panel">
+                    <div class="panel">
                         @php
                         if($domain_detail->data_share != "") {
                         $str = substr($domain_detail->data_share, 4);
@@ -194,7 +196,7 @@
                         echo $string;
                         }
                         @endphp
-                    </p>
+                    </div>
                     <button class="accordion">📨 Are users able to opt-out of data sale, marketing, or advertising?
                         @php
                         if($domain_detail->opt_out != ""):
@@ -208,7 +210,7 @@
                         endif;
                         @endphp
                     </button>
-                    <p class="panel">
+                    <div class="panel">
                         @php
                         if($domain_detail->opt_out != "") {
                         $str = substr($domain_detail->opt_out, 4);
@@ -221,7 +223,7 @@
                         echo $string;
                         }
                         @endphp
-                    </p>
+                    </div>
                 </div>
 
                 <div class="p-0 mb-2 d-flex justify-content-between">
@@ -241,7 +243,7 @@
                         <input class="form-check-input" type="checkbox" name="" id="select-all" />
                     </div>
                 </div>
-                <form action="/searchemail" method="GET" id="search-email-form" target="_blank">
+                <form action="/searchemail" method="GET" id="search-email-form">
                     <div class="pl-3 pt-2 medium-card rounded text-light email-pane">
                         <!-- <h4 class="mb-2 text-light">Users that may have submit or used their company email on
                             <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
