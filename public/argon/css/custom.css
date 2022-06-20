@@ -484,7 +484,7 @@ p.pagination-button.disabled {
 }
 
 #select-all {
-    top: 6px;
+    top: 1px;
 }
 
 .email-pane input[type="checkbox"] {
