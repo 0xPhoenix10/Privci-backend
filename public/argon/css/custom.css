@@ -394,6 +394,10 @@ h6 {
     font-weight: bolder !important;
 }
 
+.domain-list input[name="domain_name"] {
+    top: 1px;
+}
+
 p.pagination-button:hover {
     color: #6fc7bc !important;
 }
