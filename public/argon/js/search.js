@@ -204,7 +204,7 @@ function search_email(email_list, type) {
                             var match = resp.result[i].source.match(/\[(.*?)\]/);
                             html += '<div class="d-flex"><h3 class="m-0 mr-2 text-white">Source: </h3><a href="http://' + url[1] + '" target="_blank" class="m-0 text-white">' + match[1] + '</a></div>';
                             html += '<div class="d-flex"><h3 class="m-0 mr-2 text-white">Summary: </h3><p class="m-0 text-white">' + resp.result[i].description + '</p></div>';
-                            html += '<div class="d-flex"><h3 class="m-0 mr-2 text-white">Compromised data: </h3><p class="m-0 text-white">' + resp.result[i].type + '</p></div>';
+                            html += '<div class="d-flex"><h3 class="m-0 mr-2 text-white">Compromised data: </h3><p class="col-8 m-0 text-white">' + resp.result[i].type + '</p></div>';
                             html += '<div class="d-flex"><h3 class="m-0 mr-2 p-0 text-white">Recommended action: </h3><p class="col-9 m-0 p-0 text-white">' + resp.result[i].recommendation + '</p></div>';
                             html += '</div></div>';
                             $('.no-result').hide();
