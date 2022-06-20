@@ -478,3 +478,11 @@ p.pagination-button.disabled {
 .dropdown-item:active {
     background-color: #a9ebe4 !important;
 }
+
+#select-all {
+    top: 6px;
+}
+
+.email-pane input[type="checkbox"] {
+    top: 2px;
+}

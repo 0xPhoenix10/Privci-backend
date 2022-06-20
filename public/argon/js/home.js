@@ -81,6 +81,17 @@ $(function () {
         }
     });
 
+    $('.breach-panel').delegate('.policy-link', 'click', function() {
+        if($('.pol-link').hasClass('no-link')) {
+
+        } else {
+            window.open(
+                $('.pol-link').text(),
+                '_blank'
+            );
+        }
+    });
+
     // sort by az
     $('#sort_az').on('click', function() {
         $.ajax({
@@ -167,7 +178,7 @@ $(function () {
         search_by_keyword(keyword, type);
     });
 
-    $('#search-email').on('keyup', function() {
+    $('.breach-panel').delegate('#search-email', 'keyup', function() {
         var keyword = $(this).val();
         $.ajax({
             url: '/search_by_email',
