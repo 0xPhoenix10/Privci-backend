@@ -215,7 +215,11 @@ $(function () {
 
     $('.breach-panel').delegate('.email-pagination-button', 'click', function() {
         if(!$(this).hasClass('disabled')) {
-            get_emails_by_pagination($(this).data('index'));
+            if($(this).hasClass('next')) {
+                get_emails_by_pagination($('#next-page').val());
+            } else {
+                get_emails_by_pagination($('#previous-page').val());
+            }
         }
     });
 
@@ -408,10 +412,12 @@ function get_emails_by_pagination(page) {
             $('.email-pagination-button.next').addClass('disabled');
 
             if(resp.next) {
-                $('.email-pagination-button.next').attr("data-index", resp.next);
-                $('.email-pagination-button.previous').attr("data-index", resp.page);
+                $('#next-page').val(resp.next);
+                
                 $('.email-pagination-button.next').removeClass('disabled');
             }
+
+            $('#previous-page').val(resp.page-1);
 
             if(resp.page == 0) {
                 $('.email-pagination-button.previous').addClass('disabled');
