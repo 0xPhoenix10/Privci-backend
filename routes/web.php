@@ -50,6 +50,8 @@ Route::get('/support', 'App\Http\Controllers\SupportController@index')->name('su
 
 Route::get('/policy', 'App\Http\Controllers\PolicyController@index')->name('policy');
 
+Route::get('/gift', 'App\Http\Controllers\GiftController@index')->name('gift');
+
 Route::post('/upload_policy', [App\Http\Controllers\PolicyController::class, 'upload_policy']);
 Route::post('/edit_policy', [App\Http\Controllers\PolicyController::class, 'edit_policy']);
 Route::post('/delete_policy', [App\Http\Controllers\PolicyController::class, 'delete_policy']);
