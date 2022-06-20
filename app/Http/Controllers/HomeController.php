@@ -204,36 +204,36 @@ class HomeController extends Controller
         return response()->json($data);
     }
 
-    public function get_emails_by_pagination(Request $request) {
-        $emails = Search::get_domain_emails($request->domain);
-        $emails = explode(',', $emails[0]->colleague_emails);
-        $total_count = count($emails) - 1;
+    // public function get_emails_by_pagination(Request $request) {
+    //     $emails = Search::get_domain_emails($request->domain);
+    //     $emails = explode(',', $emails[0]->colleague_emails);
+    //     $total_count = count($emails) - 1;
 
-        $data['html'] = '';
-        $emails = array_slice($emails, 30 * $request->page + 1, ($request->page + 1) * 30);
+    //     $data['html'] = '';
+    //     $emails = array_slice($emails, 30 * $request->page + 1, ($request->page + 1) * 30);
 
-        var_dump($emails); die();
-        $data['start'] = 30 * $request->page + 1;
-        $data['end'] = 30 * $request->page + count($emails);
+    //     var_dump($emails); die();
+    //     $data['start'] = 30 * $request->page + 1;
+    //     $data['end'] = 30 * $request->page + count($emails);
         
-        foreach($emails as $email) {
-            if(trim($email) == '') continue;
+    //     foreach($emails as $email) {
+    //         if(trim($email) == '') continue;
             
-            $data['html'] .= '<div class="col-lg-4 col-md-6">
-                                <div class="form-check">
-                                    <label class="form-check-label ellipsis" for="">
-                                        <input type="checkbox" class="form-check-input" name="sel_email[]" value="' . $email . '">' . $email . '
-                                    </label>
-                                </div>
-                            </div>';
-        }
+    //         $data['html'] .= '<div class="col-lg-4 col-md-6">
+    //                             <div class="form-check">
+    //                                 <label class="form-check-label ellipsis" for="">
+    //                                     <input type="checkbox" class="form-check-input" name="sel_email[]" value="' . $email . '">' . $email . '
+    //                                 </label>
+    //                             </div>
+    //                         </div>';
+    //     }
 
-        if($total_count > ($request->page + 1) * 30) {
-            $data['next'] = $request->page + 1;
-        }
+    //     if($total_count > ($request->page + 1) * 30) {
+    //         $data['next'] = $request->page + 1;
+    //     }
         
-        $data['page'] = $request->page * 1;
+    //     $data['page'] = $request->page * 1;
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
 }
