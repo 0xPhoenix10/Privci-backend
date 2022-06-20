@@ -1,37 +1,20 @@
 <div class="p-2 medium-card rounded text-light">
-    <div class="d-flex mb-2 justify-content-between theme-color">
-        <div class="col-md-11 p-0 d-flex justify-content-between">
-            <div class="row">
-                <div class="col-xl-4 d-flex">
-                    <h4 class="m-0 mr-2 theme-color">Name:</h4>
-                    <p class="m-0" title="{{$domain_detail->company_name}}"
-                        style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                        {{$domain_detail->company_name}}</p>
-                </div>
-                <div class="col-xl-3 d-flex">
-                    <h4 class="m-0 mr-2 theme-color">No of breaches:</h4>
-                    <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
-                </div>
-                <div class="col-xl-5 d-flex">
-                    <h4 class="m-0 mr-2 theme-color">Privacy policy:</h4>
-                    <p class="privacy-policy m-0" title="{{$domain_detail->privacy_policy}}"
-                        style="width: 55%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                        @php
-                        if(!str_contains($domain_detail->privacy_policy, 'http')):
-                        @endphp
-                        <a href="#" class="text-warning">{{$domain_detail->privacy_policy}}</a>
-                        @php
-                        else:
-                        @endphp
-                        <a href="{{$domain_detail->privacy_policy}}"
-                            target="_blank">{{$domain_detail->privacy_policy}}</a>
-                        @endif
-                    </p>
-                </div>
-            </div>
+    <div class="row theme-color">
+        <div class="col-xl-6 d-flex">
+            <h4 class="m-0 mr-2 theme-color">Name:</h4>
+            <p class="m-0" title="{{$domain_detail->company_name}}"
+                style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                {{$domain_detail->company_name}}</p>
         </div>
-        <p class="page-show">
-            {{$domain_detail->no_of_breaches > 1 ? '1 of ' . $domain_detail->no_of_breaches : ''}}</p>
+        <div class="col-xl-5 d-flex">
+            <h4 class="m-0 mr-2 theme-color">No of breaches:</h4>
+            <p class="m-0">{{$domain_detail->no_of_breaches}}</p>
+        </div>
+        <div class="col-xl-1 text-right">
+            <p class="page-show">
+                {{$domain_detail->no_of_breaches > 1 ? '1 of ' . $domain_detail->no_of_breaches : ''}}
+            </p>
+        </div>
     </div>
     @php
     $breach_info = json_decode($domain_detail->breach_info);
@@ -87,6 +70,25 @@
     @endphp
 </div>
 <div class="accordian-container mb-5 mt-2">
+    <div class="d-flex">
+        <h4 class="m-0 mr-2 text-light policy-link" title="Click to go to the privacy policy" style="cursor: pointer">
+            What is the
+            privacy policy saying?
+        </h4>
+        <p class="privacy-policy m-0" title="{{$domain_detail->privacy_policy}}"
+            style="width: 55%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            @php
+            if(!str_contains($domain_detail->privacy_policy, 'http')):
+            @endphp
+            <a href="#" class="text-warning pol-link no-link">[{{$domain_detail->privacy_policy}}]</a>
+            @php
+            else:
+            @endphp
+            <a href="{{$domain_detail->privacy_policy}}" class="pol-link"
+                target="_blank">{{$domain_detail->privacy_policy}}</a>
+            @endif
+        </p>
+    </div>
     <button class="accordion">🛒 Is the website selling or renting the personal information of its users?
         @php
         if($domain_detail->data_sell != ""):
