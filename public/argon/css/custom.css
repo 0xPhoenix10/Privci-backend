@@ -188,8 +188,8 @@ h6 {
     transition: max-height 0.2s ease-out;
 }
 
-.accordian-container p {
-    font-weight: 500 !important;
+.accordian-container div {
+    font-weight: 300 !important;
 }
 
 .bottom-note {
