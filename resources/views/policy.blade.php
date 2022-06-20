@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="mt-5">
         <div class="faq-upload">
             <h2 class="text-light mr-3">FAQs Added</h2>
             <div class="ml-2 col add-tab border-dark text-light p-2 faq-accordion bg-dark">Add a FAQ (up to 5 FAQ may be

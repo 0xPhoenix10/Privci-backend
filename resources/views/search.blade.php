@@ -116,6 +116,8 @@
         @endphp
     </div>
 </div>
+<input type="hidden" value="{{$type}}" id="search_type">
+<input type="hidden" value="{{$list}}" id="email-list">
 @include('layouts.footers.auth')
 
 <style>

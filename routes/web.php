@@ -38,6 +38,7 @@ Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->
 Auth::routes();
 
 Route::get('/searchemail', [App\Http\Controllers\SearchController::class, 'search_email']);
+// Route::post('/searchemail', [App\Http\Controllers\SearchController::class, 'search_email']);
 
 Route::get('/searchdomain', [App\Http\Controllers\SearchController::class, 'search_domain']);
 

@@ -91,7 +91,7 @@
                             <p class="col m-0 breach-no-of-records">{{$first_breach_array['no of records']}}</p>
                         </div>
                         <div class="search-result-info">
-                            <h4 class="m-0 p-0 text-light">Breach of Summary:</h4>
+                            <h4 class="m-0 p-0 text-light">Summary:</h4>
                             <p class="col-9 m-0 breach-summary">{{$first_breach_array['breach summary']}}</p>
                         </div>
                         <div class="search-result-info">
@@ -238,7 +238,7 @@
                         <input class="form-check-input" type="checkbox" name="" id="select-all" />
                     </div>
                 </div>
-                <form action="/searchemail" method="GET" id="search-email-form">
+                <form action="/searchemail" method="GET" id="search-email-form" target="_blank">
                     <div class="pl-3 pt-2 medium-card rounded text-light email-pane">
                         <h4 class="mb-2 text-light">Users that may have submit or used their company email on
                             <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
@@ -291,7 +291,7 @@
                         }
                         @endphp
                     </div>
-                    <input type="hidden" value="2" name="search_email_type">
+                    <input type="hidden" value="multi" name="multi_search">
                 </form>
             </div>
         </div>
@@ -301,11 +301,11 @@
                     breach</button>
                 <p class="bottom-note"><strong>Note: </strong> You must select an email to use this feature</p>
             </div>
-            <div class="d-flex p-0 mr-4">
+            <div class="d-flex p-0">
                 <button class="btn btn-home-footer theme-background-color mr-4 btn-send-email">Send an email to selected
                     user(s)</button>
-                <button class="btn btn-home-footer theme-background-color btn-push-notify">Send a push
-                    notification</button>
+                <!-- <button class="btn btn-home-footer theme-background-color btn-push-notify">Send a push
+                    notification</button> -->
             </div>
         </div>
     </div>
