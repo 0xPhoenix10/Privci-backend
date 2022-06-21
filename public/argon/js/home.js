@@ -259,7 +259,7 @@ $(function () {
             body += "<br><Please add your email signature>";
             
             var mailto = "mailto:" + first_email + "?cc=" + send_emails + "&body=" + body;
-            console.log(mailto);
+
             window.open(
                 mailto,
                 '_blank'
