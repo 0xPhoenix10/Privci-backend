@@ -1,44 +1,69 @@
-function analyze_uploaded_file() {
-    if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
-        alert('The File APIs are not fully supported in this browser.');
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$('#file-upload').submit(function(e) {
+    e.preventDefault();
+    var input = $('#formFile').prop('files');
+
+    if(input[0] == undefined) {
+        swal.fire({
+            title: "Upload File",
+            text: "Please select file to upload!",
+            type: 'warning',
+            icon: "warning",
+            dangerMode: true,
+            confirmButtonColor: "#009683",
+            confirmButtonText: 'OK'
+        });
+
         return;
     }
 
-    var input = $('#formFile').prop('files');
-    if (!input) {
-        alert("Um, couldn't find the fileinput element.");
-    } else if (!input) {
-        alert("This browser doesn't seem to support the `files` property of file inputs.");
-    } else if (!input[0]) {
-        alert("Please select a file before clicking 'Load'");
-    } else {
-        var file = input[0];
-        if (file.type == 'text/plain' || file.type == 'application/pdf' || file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type == 'application/msword') {
-            var fr = new FileReader();
+    var formData = new FormData(this);
 
-            fr.addEventListener("load", () => {
-                // this will then display a text file
-                $('#policy_content').val(fr.result);
-            }, false);
-
-            if (input) {
-                fr.readAsBinaryString(file);
+    $.ajax({
+        type:'POST',
+        url: "/upload_file",
+        data: formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            if(data.success) {
+                $('#policy_content').val(data.text);
+            } else {
+                swal.fire({
+                    title: "Upload File",
+                    text: data.msg,
+                    type: 'error',
+                    icon: "error",
+                    dangerMode: true,
+                    confirmButtonColor: "#009683",
+                    confirmButtonText: 'OK'
+                });
+        
+                return;
             }
-        } else {
+            
+        },
+        error: function(){
             swal.fire({
-                title: "Extract Content",
-                text: "Please upload correct extension!",
+                title: "Upload File",
+                text: 'The file must be a file of type: doc, docx, pdf, txt.',
                 type: 'error',
                 icon: "error",
                 dangerMode: true,
                 confirmButtonColor: "#009683",
                 confirmButtonText: 'OK'
             });
-
+    
             return;
         }
-    }
-}
+    });
+});
 
 $('#cancel_btn').on('click', function() {
     $('#policy_content').val('');
@@ -146,7 +171,7 @@ function onEditDoc(pid) {
             $('#policy_content').val(resp.policy.content);
             $('#policy_title').val(resp.policy.title);
             $('#policy_link').val(resp.policy.link);
-            $('#save_btn').html('Edit Policy');
+            $('#save_btn').html('Save Edit');
             $('#cancel_btn').show();
             $('#policy_edit_number').val(resp.policy.id);
 
