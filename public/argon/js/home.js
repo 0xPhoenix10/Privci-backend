@@ -65,7 +65,7 @@ $(function () {
         }
     });
 
-    $('.breach-panel').delegate('.email-pane label.form-check-label', 'click', function() {
+    $('.breach-panel').delegate('.email-pane .form-check-input', 'click', function() {
         if ($(this).prop('checked') == true) {
             $(this).prop('checked', false);
         } else {

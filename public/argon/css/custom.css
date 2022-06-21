@@ -117,6 +117,10 @@ h6 {
     font-size: 16px;
 }
 
+.breach-panel .medium-card p {
+    line-height: 1.5rem;
+}
+
 .medium-card .page-selected {
     border-radius: 5px;
     background-color: white;
@@ -158,12 +162,14 @@ h6 {
     border: none;
     outline: none;
     transition: 0.4s;
+    font-size: 14px !important;
 }
 
 .inner-card .accordian-container .accordion i {
     position: relative;
-    top: 2px;
+    top: 3px;
     font-size: 20px;
+    color: #ced4da;
 }
 
 .inner-card .accordian-container .panel {

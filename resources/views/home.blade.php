@@ -227,8 +227,8 @@
                 </div>
 
                 <div class="p-0 mb-2 d-flex justify-content-between">
-                    <div class="col-8 p-0 d-flex m-0 align-items-center">
-                        <h4 class="text-light mr-1">Users that may have submit or used their company email on </h4>
+                    <div class="col-9 p-0 d-flex m-0 align-items-center">
+                        <h4 class="text-light mr-1">Users who may have submitted data, such as work email, to </h4>
                         <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
                             {{$domain_detail->monitoring_domain}}
                         </a>
@@ -239,7 +239,8 @@
                         </div> -->
                     </div>
                     <div class="form-check d-flex align-items-center">
-                        <label class="form-check-label text-light" for="select-all"> Select all on this page </label>
+                        <label class="form-check-label text-light" for="select-all" style="font-size: 15px"> Select all
+                            on this page </label>
                         <input class="form-check-input" type="checkbox" name="" id="select-all" />
                     </div>
                 </div>
