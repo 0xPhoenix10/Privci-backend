@@ -216,7 +216,7 @@ function search_email(email_list, type) {
             } else {
                 swal.fire({
                     title: "Search by Email",
-                    text: rsp.error,
+                    text: "Search Timeout!",
                     type: 'warning',
                     icon: "warning",
                     dangerMode: true,
