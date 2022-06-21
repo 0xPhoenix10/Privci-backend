@@ -9,12 +9,15 @@
             your data protection policy</h4>
         <p class="upload-note mb-5"><strong>Note:</strong> Content will only be available to colleagues within your
             organisation</p>
-        <div class="d-flex align-items-center mb-2">
-            <input class="col-md-8 mr-3 form-control" type="file" id="formFile" accept=".pdf, .doc, .docx, .txt">
-            <input type="button" class="btn theme-background-color ml-2 mr-2" value="Upload to index content"
-                name="upload_content" onclick="analyze_uploaded_file()" id="analyze_file">
-            <p class="upload-note">Supported:<br>pdf, doc, docx, text</p>
-        </div>
+        <form method="POST" enctype="multipart/form-data" id="file-upload" action="javascript:void(0)">
+            <div class="d-flex align-items-center mb-2">
+                <input class="col-md-8 mr-3 form-control" name="file" type="file" id="formFile"
+                    accept=".pdf, .doc, .docx, .txt">
+                <input type="submit" class="btn theme-background-color ml-2 mr-2" value="Upload to index content"
+                    name="upload_content" id="analyze_file">
+                <p class="upload-note">Supported:<br>pdf, doc, docx, text</p>
+            </div>
+        </form>
         <!-- <div class="d-flex align-items-center">
             <h4 class="text-light mr-2">Or extract from a link: </h4>
             <input type="url" class="col-4 form-control" id="email" placeholder="Add link to extract..." name="url">
@@ -23,12 +26,16 @@
         </div> -->
     </div>
 
-    <textarea name="policy_content" id="policy_content" rows="10" class="col-xl-12 rounded mb-2"
-        placeholder="Copy and paste policy text..."></textarea>
+    <div>
+        <textarea name="policy_content" id="policy_content" rows="10" class="col-xl-12 rounded mb-2"
+            placeholder="Copy and paste policy text..."></textarea>
+        <span class="required">*</span>
+    </div>
 
     <div class="d-flex align-items-center mb-3">
         <h4 class="mr-3 text-light">Add a title to this document: </h4>
         <input type="text" class="col form-control" id="policy_title" placeholder="Start typing..." name="policy_title">
+        <span class="required" style="margin-top: -15px">*</span>
     </div>
     <div class="d-flex align-items-center mb-5">
         <div>
