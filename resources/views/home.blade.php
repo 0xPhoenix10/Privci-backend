@@ -228,7 +228,8 @@
 
                 <div class="p-0 mb-2 d-flex justify-content-between">
                     <div class="col-9 p-0 d-flex m-0 align-items-center">
-                        <h4 class="text-light mr-1">Users who may have submitted data, such as work email, to </h4>
+                        <h4 class="text-light mr-1" style="font-size: 14px">Users who may have submitted data, such as
+                            work email, to </h4>
                         <a class="theme-color" href="https://{{$domain_detail->monitoring_domain}}" target="_blank">
                             {{$domain_detail->monitoring_domain}}
                         </a>
