@@ -257,9 +257,9 @@ $(function () {
             body += "<br><br>Reference: <please add url to reference>";
             body += "<br><br><br>Best Regards,";
             body += "<br><Please add your email signature>";
-            console.log(mailto);
+            
             var mailto = "mailto:" + first_email + "?cc=" + send_emails + "&body=" + body;
-
+            console.log(mailto);
             window.open(
                 mailto,
                 '_blank'
