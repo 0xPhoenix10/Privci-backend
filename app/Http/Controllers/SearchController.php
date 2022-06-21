@@ -64,7 +64,7 @@ class SearchController extends Controller
                 'Accept-Charset: UTF-8')
             );
             curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 180);
             curl_setopt($ch, CURLOPT_HEADER, 1);
             curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $key);
 
@@ -114,7 +114,7 @@ class SearchController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data_domain));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 180);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'Accept-Charset: UTF-8')
