@@ -514,3 +514,7 @@ p.pagination-button.disabled {
         right: 25px;
     }
 }
+
+#search-email-form .email-pane {
+    min-height: 300px !important;
+}

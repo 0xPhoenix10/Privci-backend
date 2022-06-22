@@ -5,8 +5,8 @@
 <div class="container-fluid main-container pt-7 pb-7 bg-darker">
     <div class="text-light">
         <h1 class="text-light mb-2">Upload A Data Protection Policy</h1>
-        <h4 class="text-light">This will allow users to ask questions and receive answers that are token directly from
-            your data protection policy</h4>
+        <h4 class="text-light">This will allow the data protection policy to be used as a reference point for answering
+            questions submitted by users</h4>
         <p class="upload-note mb-5"><strong>Note:</strong> Content will only be available to colleagues within your
             organisation</p>
         <form method="POST" enctype="multipart/form-data" id="file-upload" action="javascript:void(0)">
@@ -84,13 +84,13 @@
                 procedures, an the contact
                 details of your Data Protection Officer.</p>
             <div class="row mb-1">
-                <h3 class="col-xl-2 mb-1">Questions:</h3>
-                <input type="text" class="ml-3 mr-3 col-xl-7 form-control" placeholder="Maximum of 60 characters..."
+                <h3 class="col-xl-1 mb-1">Questions:</h3>
+                <input type="text" class="ml-3 mr-3 col-xl-8 form-control" placeholder="Maximum of 60 characters..."
                     id="doc_question" value="">
             </div>
             <div class="row mb-2">
-                <h3 class="col-xl-2 mb-1">Answer:</h3>
-                <textarea name="" cols="" rows="5" class="ml-3 mr-3 col-xl-7 form-control mb-2"
+                <h3 class="col-xl-1 mb-1">Answer:</h3>
+                <textarea name="" cols="" rows="5" class="ml-3 mr-3 col-xl-8 form-control mb-2"
                     placeholder="Maximum of 1000 characters..." id="doc_answer"></textarea>
                 <div class="col-xl-3 d-flex align-items-end mb-2 faq-btns">
                     <button class="btn theme-background-color" id="save_faq_btn" onClick="onAddFaq()">Add</button>
