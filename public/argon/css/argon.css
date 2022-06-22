@@ -8212,6 +8212,11 @@ button.bg-darker:focus {
     margin-top: -16rem !important;
 }
 
+.mt--12,
+.my--12 {
+    margin-top: -12rem !important;
+}
+
 .mt--9,
 .my--9 {
     margin-top: -10rem !important;
