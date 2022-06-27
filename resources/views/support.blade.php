@@ -67,7 +67,9 @@
                 @php
                 if(empty($supports)):
                 @endphp
-                <tr class="no-row">No results found!</tr>
+                <tr class="no-row">
+                    <td colspan="3">No results found!</td>
+                </tr>
                 @php
                 else:
                 foreach($supports as $support):
