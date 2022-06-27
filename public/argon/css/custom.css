@@ -541,3 +541,7 @@ p.pagination-button.disabled {
 .row-del:hover {
     color: #f5365c !important;
 }
+
+.no-row {
+    text-align: center !important;
+}
