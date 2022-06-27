@@ -65,6 +65,11 @@
             </thead>
             <tbody>
                 @php
+                if(empty($supports)):
+                @endphp
+                <div class="no-row">No results found!</div>
+                @php
+                else:
                 foreach($supports as $support):
                 @endphp
                 <tr class="{{($support->status == 'Y') ? 'text-muted' : '' }}">
@@ -82,6 +87,7 @@
                 </tr>
                 @php
                 endforeach;
+                endif;
                 @endphp
             </tbody>
         </table>
