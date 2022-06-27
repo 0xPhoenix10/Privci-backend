@@ -32,4 +32,12 @@ class Setting extends Model
         
         return $result;
     }
+
+    public static function update_tracking_setting($status) {
+        $result = DB::table('settings')
+                        ->where('main_organisation', 'privci.com')
+                        ->update(['tracking' => $status]);
+        
+        return $result;
+    }
 }

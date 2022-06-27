@@ -52,4 +52,15 @@ class AccountController extends Controller
 
         return response()->json($data);
     }
+
+    public function save_email_tracking(Request $request) {
+        $data['status'] = 'error';
+        $result = Setting::update_tracking_setting($request->tracking);
+
+        if($result) {
+            $data['status'] = 'success';
+        }
+
+        return response()->json($data);
+    }
 }

@@ -1,5 +1,21 @@
 $(function() {
     $('.main-container').css('minHeight', $(window).height());
+
+    $('input[name=tracking-company-email]').on('click', function() {
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url: '/save_email_tracking',
+            data: {
+                _token: CSRF_TOKEN,
+                tracking: $(this).val()
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function () {
+                
+            }
+        });
+    });
 });
 
 $('.breach-panel').delegate('button.accordion', 'click', function() {
@@ -54,7 +70,6 @@ function save_notification_email(email) {
 }
 
 function save_notification_status(status) {
-    console.log(status);
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         url: '/save_notification_status',

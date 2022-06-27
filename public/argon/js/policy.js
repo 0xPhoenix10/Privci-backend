@@ -190,7 +190,6 @@ function onDeleteDoc(pid) {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-        console.log(result);
         if (result.value) {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $.ajax({

@@ -518,3 +518,26 @@ p.pagination-button.disabled {
 #search-email-form .email-pane {
     min-height: 300px !important;
 }
+
+#support-table th,
+#support-table td {
+    border-color: #2a2a2a !important;
+}
+
+#support-table th {
+    border-top-width: 3px;
+    text-transform: unset !important;
+    font-size: 13px !important;
+}
+
+.row-del {
+    cursor: pointer;
+    color: red !important;
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+}
+
+.row-del:hover {
+    color: #f5365c !important;
+}

@@ -28,20 +28,22 @@
         <div class="card-header bg-dark" style="border-radius: 5px">
             <h1 class="m-0 mr-2 text-light">Tracking Company Email</h1>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="tracking-company-email" id="account_radio_1" checked>
+                <input class="form-check-input" type="radio" name="tracking-company-email" id="account_radio_1"
+                    value="1" {{($setting->tracking == 1) ? "checked" : ""}}>
                 <label class="form-check-label text-light" for="account_radio_1">
                     Automatically track sites where user may have provided or used their company email address
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="tracking-company-email" id="account_radio_2">
+                <input class="form-check-input" type="radio" name="tracking-company-email" id="account_radio_2"
+                    value="2" {{($setting->tracking == 2) ? "checked" : ""}}>
                 <label class="form-check-label text-light" for="account_radio_2">
                     Allow users to approve which sites tomonitor after providing or using their company email address
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input color-red" type="radio" name="tracking-company-email"
-                    id="account_radio_3">
+                    id="account_radio_3" value="0" {{($setting->tracking == 0) ? "checked" : ""}}>
                 <label class="form-check-label text-red" for="account_radio_3">
                     Stop tracking
                 </label>
