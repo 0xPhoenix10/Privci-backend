@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Support;
-use Auth;
+use Auth, Mail;
+use App\Mail\EmailSender;
 
 class SupportController extends Controller
 {
@@ -39,6 +40,8 @@ class SupportController extends Controller
         $result = Support::save_support($request, $signed_user_id);
 
         if($result) {
+            $this->send_email($request->subject, $request->detail);
+
             $data['status'] = 'success';
         }
 
@@ -71,5 +74,19 @@ class SupportController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    private function send_email($subject, $detail) {
+        $emailParams = new \stdClass();
+        $emailParams->senderName = Auth::user()->name;
+        $emailParams->senderEmail = Auth::user()->email;
+        $emailParams->receiverName = "Privci Support Team";
+        $emailParams->receiverEmail = "enterprise@privci.com";
+        $emailParams->subject = $subject;
+        $emailParams->detail = $detail;
+
+        Mail::to($emailParams->receiverEmail)->send(new EmailSender($emailParams));
+
+        return true;
     }
 }
