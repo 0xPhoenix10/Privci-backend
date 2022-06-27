@@ -40,7 +40,7 @@ class SupportController extends Controller
         $result = Support::save_support($request, $signed_user_id);
 
         if($result) {
-            $this->send_email($request->subject, $request->detail);
+            $this->send_email($request->subject, $request->detail, $request->cc);
 
             $data['status'] = 'success';
         }
@@ -76,7 +76,16 @@ class SupportController extends Controller
         return response()->json($data);
     }
 
-    private function send_email($subject, $detail, $cc = true) {
+    public function ping(Request $request) {
+        $data['status'] = 'success';
+        $support = Support::get_one($sid);
+
+        $this->send_email($support[0]->subject, $support[0]->detail);
+
+        return response()->json($data);
+    }
+
+    private function send_email($subject, $detail, $cc = "false") {
         $emailParams = new \stdClass();
         $emailParams->senderName = Auth::user()->name;
         $emailParams->senderEmail = Auth::user()->email;
@@ -85,12 +94,11 @@ class SupportController extends Controller
         $emailParams->subject = $subject;
         $emailParams->detail = $detail;
 
-        if(!$cc) {
+        if($cc == 'false') {
             Mail::to($emailParams->receiverEmail)->send(new EmailSender($emailParams));
         } else {
             Mail::to($emailParams->receiverEmail)->cc([$emailParams->senderEmail])->send(new EmailSender($emailParams));
         }
-        
 
         return true;
     }

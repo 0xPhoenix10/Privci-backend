@@ -80,11 +80,13 @@
                         {{$support->subject}}
                     </td>
                     <td class="text-right">
-                        <button class="btn btn-sm btn-info" onclick="">Ping</button>
+                        @if(Auth::user()->id == $support->user_id)
+                        <button class="btn btn-sm btn-info" onclick="ping({{$support->id}})">Ping</button>
                         @if($support->status == 'N')
                         <button class="btn btn-sm btn-default" onclick="resolve({{$support->id}})">Resolve</button>
                         @endif
                         <a class="row-del" onclick="del_support({{$support->id}})"><i class="fa-solid fa-xmark"></i></a>
+                        @endif
                     </td>
                 </tr>
                 @php
