@@ -76,7 +76,7 @@ class SupportController extends Controller
         return response()->json($data);
     }
 
-    private function send_email($subject, $detail) {
+    private function send_email($subject, $detail, $cc = true) {
         $emailParams = new \stdClass();
         $emailParams->senderName = Auth::user()->name;
         $emailParams->senderEmail = Auth::user()->email;
@@ -85,7 +85,12 @@ class SupportController extends Controller
         $emailParams->subject = $subject;
         $emailParams->detail = $detail;
 
-        Mail::to($emailParams->receiverEmail)->send(new EmailSender($emailParams));
+        if(!$cc) {
+            Mail::to($emailParams->receiverEmail)->send(new EmailSender($emailParams));
+        } else {
+            Mail::to($emailParams->receiverEmail)->cc([$emailParams->senderEmail])->send(new EmailSender($emailParams));
+        }
+        
 
         return true;
     }
