@@ -1,0 +1,1 @@
+{{$emailParams->detail}}
