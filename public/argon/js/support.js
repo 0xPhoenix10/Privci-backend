@@ -38,7 +38,8 @@ function send_support() {
         data: {
             _token: CSRF_TOKEN,
             subject: subject,
-            detail: detail
+            detail: detail,
+            cc: $('#send_copy').is(':checked')
         },
         dataType: 'json',
         success: function(resp) {
@@ -135,5 +136,31 @@ function del_support(sid) {
             });
         }
     });
-    
+}
+
+function ping(sid) {
+    $.ajax({
+        url: 'ping',
+        type: 'POST',
+        data: {
+            _token: CSRF_TOKEN,
+            sid: sid
+        },
+        dataType: 'json',
+        success: function() {
+            swal.fire({
+                title: "Ping",
+                text: "Successfully sent!",
+                type: 'success',
+                icon: "success",
+                dangerMode: true,
+                confirmButtonColor: "#009683",
+                confirmButtonText: 'OK'
+            });
+
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        }
+    })
 }

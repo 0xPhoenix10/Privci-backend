@@ -17,6 +17,16 @@ class Support extends Model
         return $result;
     }
 
+    public static function get_one($sid) {
+        $result = DB::table('supports')
+                        ->select('*')
+                        ->where('is_delete', 'N')
+                        ->where('id', $sid)
+                        ->get()->toArray();
+        
+        return $result;
+    }
+
     public static function save_support($request, $user_id) {
         $result = DB::table('supports')->insert([
             'subject' => $request->subject,

@@ -62,6 +62,7 @@ Route::post('/delete_faq', [App\Http\Controllers\PolicyController::class, 'delet
 
 Route::post('/send_support', [App\Http\Controllers\SupportController::class, 'send_support']);
 Route::post('/resolve_support', [App\Http\Controllers\SupportController::class, 'resolve']);
+Route::post('/ping', [App\Http\Controllers\SupportController::class, 'ping']);
 Route::post('/delete_support', [App\Http\Controllers\SupportController::class, 'del_support']);
 
 Route::post('/save_notification_email', [App\Http\Controllers\AccountController::class, 'save_notification_email']);
