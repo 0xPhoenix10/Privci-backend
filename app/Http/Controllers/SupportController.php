@@ -78,7 +78,7 @@ class SupportController extends Controller
 
     public function ping(Request $request) {
         $data['status'] = 'success';
-        $support = Support::get_one($sid);
+        $support = Support::get_one($request->sid);
 
         $this->send_email($support[0]->subject, $support[0]->detail);
 
