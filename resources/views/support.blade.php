@@ -26,14 +26,14 @@
     <div class="text-light mb-7">
         <h1 class="text-light mb-4">Submit A Support Request</h1>
         <div class="row align-items-top mb-3 mr-0">
-            <h4 class="col-xl-2 text-light">Subject: </h4>
-            <input type="text" class="col-xl-10 form-control no-radius" id="subject">
+            <h4 class="col-lg-2 text-light">Subject: </h4>
+            <input type="text" class="col-lg-10 form-control no-radius" id="subject">
             <span class="required">*</span>
         </div>
 
         <div class="row align-items-top mb-3 mr-0">
-            <h4 class="col-xl-2 text-light">Request details: </h4>
-            <textarea class="col-xl-10 form-control no-radius" rows=7 id="detail"></textarea>
+            <h4 class="col-lg-2 text-light">Request details: </h4>
+            <textarea class="col-lg-10 form-control no-radius" rows=7 id="detail"></textarea>
             <span class="required">*</span>
         </div>
 
@@ -82,10 +82,16 @@
                     </td>
                     <td class="text-right">
                         @if(Auth::user()->id == $support->user_id)
+                        @if($support->is_ping == 'N')
                         <button class="btn btn-sm btn-info no-radius" onclick="ping({{$support->id}})">Ping</button>
+                        @else
+                        <button class="btn btn-sm btn-dark no-radius" disabled>Ping</button>
+                        @endif
                         @if($support->status == 'N')
                         <button class="btn btn-sm btn-default no-radius"
                             onclick="resolve({{$support->id}})">Resolve</button>
+                        @else
+                        <button class="btn btn-sm btn-dark no-radius" disabled>Resolve</button>
                         @endif
                         <a class="row-del" onclick="del_support({{$support->id}})"><i class="fa-solid fa-xmark"></i></a>
                         @endif

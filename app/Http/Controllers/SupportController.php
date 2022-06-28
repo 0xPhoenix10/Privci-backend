@@ -81,7 +81,8 @@ class SupportController extends Controller
         $support = Support::get_one($request->sid);
 
         $this->send_email($support[0]->subject, $support[0]->detail);
-
+        Support::set_ping($request->sid);
+        
         return response()->json($data);
     }
 
