@@ -26,20 +26,20 @@
     <div class="text-light mb-7">
         <h1 class="text-light mb-4">Submit A Support Request</h1>
         <div class="row align-items-top mb-3 mr-0">
-            <h4 class="col-lg-2 text-light">Subject: </h4>
-            <input type="text" class="col-lg-10 form-control no-radius" id="subject">
+            <h4 class="col-100-12 text-light">Subject: </h4>
+            <input type="text" class="col-100-88 form-control no-radius" id="subject">
             <span class="required">*</span>
         </div>
 
         <div class="row align-items-top mb-3 mr-0">
-            <h4 class="col-lg-2 text-light">Request details: </h4>
-            <textarea class="col-lg-10 form-control no-radius" rows=7 id="detail"></textarea>
+            <h4 class="col-100-12 text-light">Request details: </h4>
+            <textarea class="col-100-88 form-control no-radius" rows=7 id="detail"></textarea>
             <span class="required">*</span>
         </div>
 
         <div class="row mb-3">
-            <div class="col-xl-2"></div>
-            <div class="col-xl-5 pl-0">
+            <div class="col-100-12"></div>
+            <div class="col-100-44 pl-0">
                 <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" name="send_copy" id="send_copy" type="checkbox">
                     <label class="custom-control-label" for="send_copy">
@@ -47,7 +47,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-xl-5 text-right">
+            <div class="col-100-44 text-right">
                 <button class="btn theme-background-color no-radius" id="submit"
                     onclick="send_support()">Submit</button>
             </div>

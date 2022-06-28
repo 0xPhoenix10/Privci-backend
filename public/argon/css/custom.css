@@ -555,8 +555,38 @@ body
     > div
     > div.text-light.mb-7
     > div:nth-child(4)
-    > div.col-xl-5.pl-0
+    > div.col-100-44.pl-0
     > div
     > label:before {
     border-radius: unset !important;
+}
+
+.col-100-12 {
+    max-width: 12%;
+    flex: 0 0 12%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.col-100-88 {
+    max-width: 88%;
+    flex: 0 0 88%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.col-100-44 {
+    max-width: 44%;
+    flex: 0 0 44%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
