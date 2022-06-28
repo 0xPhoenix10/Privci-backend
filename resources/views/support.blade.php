@@ -27,13 +27,13 @@
         <h1 class="text-light mb-4">Submit A Support Request</h1>
         <div class="row align-items-top mb-3 mr-0">
             <h4 class="col-xl-2 text-light">Subject: </h4>
-            <input type="text" class="col-xl-10 form-control" id="subject">
+            <input type="text" class="col-xl-10 form-control no-radius" id="subject">
             <span class="required">*</span>
         </div>
 
         <div class="row align-items-top mb-3 mr-0">
             <h4 class="col-xl-2 text-light">Request details: </h4>
-            <textarea class="col-xl-10 form-control" rows=7 id="detail"></textarea>
+            <textarea class="col-xl-10 form-control no-radius" rows=7 id="detail"></textarea>
             <span class="required">*</span>
         </div>
 
@@ -48,7 +48,8 @@
                 </div>
             </div>
             <div class="col-xl-5 text-right">
-                <button class="btn theme-background-color" id="submit" onclick="send_support()">Submit</button>
+                <button class="btn theme-background-color no-radius" id="submit"
+                    onclick="send_support()">Submit</button>
             </div>
         </div>
     </div>
@@ -81,9 +82,10 @@
                     </td>
                     <td class="text-right">
                         @if(Auth::user()->id == $support->user_id)
-                        <button class="btn btn-sm btn-info" onclick="ping({{$support->id}})">Ping</button>
+                        <button class="btn btn-sm btn-info no-radius" onclick="ping({{$support->id}})">Ping</button>
                         @if($support->status == 'N')
-                        <button class="btn btn-sm btn-default" onclick="resolve({{$support->id}})">Resolve</button>
+                        <button class="btn btn-sm btn-default no-radius"
+                            onclick="resolve({{$support->id}})">Resolve</button>
                         @endif
                         <a class="row-del" onclick="del_support({{$support->id}})"><i class="fa-solid fa-xmark"></i></a>
                         @endif
