@@ -46,6 +46,14 @@ class Support extends Model
         return $result;
     }
 
+    public static function set_ping($sid) {
+        $result = DB::table('supports')
+                        ->where('id', $sid)
+                        ->update(['is_ping' => 'Y']);
+        
+        return $result;
+    }
+
     public static function del_support($sid) {
         $result = DB::table('supports')
                         ->where('id', $sid)
