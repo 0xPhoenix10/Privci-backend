@@ -545,3 +545,18 @@ p.pagination-button.disabled {
 .no-row {
     text-align: center !important;
 }
+
+.no-radius {
+    border-radius: unset !important;
+}
+
+body
+    > div
+    > div
+    > div.text-light.mb-7
+    > div:nth-child(4)
+    > div.col-xl-5.pl-0
+    > div
+    > label:before {
+    border-radius: unset !important;
+}
