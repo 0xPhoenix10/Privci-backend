@@ -98,6 +98,7 @@ class SupportController extends Controller
         if($cc == 'false') {
             Mail::to($emailParams->receiverEmail)->send(new EmailSender($emailParams));
         } else {
+            $emailParams->is_cc = true;
             Mail::to($emailParams->receiverEmail)->cc([$emailParams->senderEmail])->send(new EmailSender($emailParams));
         }
 
