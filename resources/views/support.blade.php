@@ -41,7 +41,7 @@
             <div class="col-100-12"></div>
             <div class="col-100-44 pl-0">
                 <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" name="send_copy" id="send_copy" type="checkbox">
+                    <input class="custom-control-input" name="send_copy" id="send_copy" type="checkbox" checked>
                     <label class="custom-control-label" for="send_copy">
                         <span class="text-primary">Send a copy to my email</span>
                     </label>
