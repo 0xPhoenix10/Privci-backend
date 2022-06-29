@@ -31,7 +31,7 @@ class EmailSender extends Mailable
      */
     public function build()
     {
-        $this->from($this->emailParams->senderEmail, $this->emailParams->senderName)
+        $this->from($this->emailParams->senderEmail)
             ->subject($this->emailParams->subject)
             ->view('mail.template')
             ->with(['emailParams' => $this->emailParams]);
