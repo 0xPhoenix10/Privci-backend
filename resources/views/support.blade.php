@@ -82,16 +82,13 @@
                     </td>
                     <td class="text-right">
                         @if(Auth::user()->id == $support->user_id)
-                        @if($support->is_ping == 'N')
-                        <button class="btn btn-sm btn-info no-radius" onclick="ping({{$support->id}})">Ping</button>
-                        @else
+                        @if($support->status == 'Y')
                         <button class="btn btn-sm btn-dark no-radius" disabled>Ping</button>
-                        @endif
-                        @if($support->status == 'N')
+                        <button class="btn btn-sm btn-dark no-radius" disabled>Resolved</button>
+                        @else
+                        <button class="btn btn-sm btn-info no-radius" onclick="ping({{$support->id}})">Ping</button>
                         <button class="btn btn-sm btn-default no-radius"
                             onclick="resolve({{$support->id}})">Resolve</button>
-                        @else
-                        <button class="btn btn-sm btn-dark no-radius" disabled>Resolve</button>
                         @endif
                         <a class="row-del" onclick="del_support({{$support->id}})"><i class="fa-solid fa-xmark"></i></a>
                         @endif
