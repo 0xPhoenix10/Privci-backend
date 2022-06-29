@@ -9,9 +9,10 @@ class Support extends Model
 {
     public static function get_supports() {
         $result = DB::table('supports')
-                        ->select('*')
-                        ->where('is_delete', 'N')
-                        ->orderBy('id', 'desc')
+                        ->join('users', 'users.id', '=', 'supports.user_id')
+                        ->select('supports.id', 'supports.subject', 'supports.reg_date', 'supports.status', 'supports.is_ping', 'supports.user_id', 'users.name', 'users.email')
+                        ->where('supports.is_delete', 'N')
+                        ->orderBy('supports.id', 'desc')
                         ->get()->toArray();
         
         return $result;

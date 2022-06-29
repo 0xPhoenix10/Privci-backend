@@ -27,13 +27,13 @@
         <h1 class="text-light mb-4">Submit A Support Request</h1>
         <div class="row align-items-top mb-3 mr-0">
             <h4 class="col-100-12 text-light">Subject: </h4>
-            <input type="text" class="col-100-88 form-control no-radius" id="subject">
+            <input type="text" class="col-100-88 form-control no-radius bg-dark text-light" id="subject">
             <span class="required">*</span>
         </div>
 
         <div class="row align-items-top mb-3 mr-0">
             <h4 class="col-100-12 text-light">Request details: </h4>
-            <textarea class="col-100-88 form-control no-radius" rows=7 id="detail"></textarea>
+            <textarea class="col-100-88 form-control no-radius bg-dark text-light" rows=7 id="detail"></textarea>
             <span class="required">*</span>
         </div>
 
@@ -61,6 +61,7 @@
                 <tr class="text-primary">
                     <th scope="col">Date Submitted</th>
                     <th scope="col">Subject</th>
+                    <th scope="col">User</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -80,6 +81,7 @@
                     <td>
                         {{$support->subject}}
                     </td>
+                    <td>{{$support->email}}</td>
                     <td class="text-right">
                         @if(Auth::user()->id == $support->user_id)
                         @if($support->status == 'Y')
