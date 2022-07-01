@@ -30,7 +30,10 @@
     } else {
     $breach_count = count($array);
     $first_breach_array = get_object_vars($array[0]);
-    $breach_summary = substr($first_breach_array['breach summary'], 0, 150);
+    $length1 = strlen('You can read more at ');
+    $length2 = strlen($domain_detail->monitoring_domain);
+    $length = 180 - $length1 - $length2;
+    $breach_summary = substr($first_breach_array['breach summary'], 0, $length);
     $breach_summary .= '...';
     @endphp
     <div class="breach-content">
@@ -48,14 +51,20 @@
                 {{$first_breach_array['breach summary']}}
                 <a href="{{$first_breach_array['reference']}}" target="_blank"
                     class="breach-reference col m-0 p-0 breach-refer">
-                    You can read more at ...
+                    You can read more at {{$domain_detail->monitoring_domain}}
                 </a>
             </p>
             <p class="col-11 m-0 breach-summary">
                 {{$breach_summary}}
+                @if(strlen($first_breach_array['breach summary']) > $length)
                 <a href="#" class="read-more">read more</a>
+                @else
+                <a href="{{$first_breach_array['reference']}}" target="_blank"
+                    class="breach-reference col m-0 p-0 breach-refer">
+                    You can read more at {{$domain_detail->monitoring_domain}}
+                </a>
+                @endif
             </p>
-            <a></a>
         </div>
         <!-- <div class="search-result-info">
             <h4 class="m-0 text-light">Reference:</h4>
@@ -227,6 +236,7 @@
     </div>";}
     @endphp
 
+    <div class="empty-email-pane"></div>
     <div class="row p-0 m-0 mt-3 justify-content-between search-footer">
         @php
         if($page_length > 0) {

@@ -1,7 +1,8 @@
 var selected_emails = [];
 
 $(function () {
-    setDomailListHeight();    
+    setEmailListHeight();
+    setDomailListHeight();
 
     if($('.breach-pagination-btn').length == 1) {
         $('.breach-next').addClass('disabled');
@@ -352,6 +353,7 @@ function get_by_domain(domain) {
             $('.breach-panel .inner-card').html(resp.html);
             $('#selected_domain').val(resp.selected);
 
+            setEmailListHeight();
             setDomailListHeight();
             check_selected_domain();
         }
@@ -399,6 +401,7 @@ function breach_pagination(page) {
             var count = resp.index*1 + 1;
             $('.page-show').text(count + ' of ' + $('.breach-pagination-btn').length);
 
+            setEmailListHeight();
             setDomailListHeight(); 
         }
     });
@@ -435,6 +438,7 @@ function get_emails_by_pagination(page) {
                 $('.email-pagination-button.previous').removeClass('disabled');
             }
 
+            setEmailListHeight();
             setDomailListHeight(); 
         }
     });
@@ -442,6 +446,11 @@ function get_emails_by_pagination(page) {
 
 function setDomailListHeight() {
     $('.main-card .card-col:first-child .inner-card').css('maxHeight', ($('.breach-panel .inner-card').height() + 15));
+}
+
+function setEmailListHeight() {
+    var height = $('.email-pane .email-list').height() + $('.email-pane .search-footer').height();
+    $('.email-pane .empty-email-pane').css('height', 340 - height);
 }
 
 function check_selected_domain() {
