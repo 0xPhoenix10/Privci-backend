@@ -92,6 +92,11 @@ $(function () {
         }
     });
 
+    $('.breach-panel').delegate('.read-more', 'click', function() {
+        $('.breach-summary-hidden').show();
+        $('.breach-summary').hide();
+    });
+
     // sort by az
     $('#sort_az').on('click', function() {
         $.ajax({
