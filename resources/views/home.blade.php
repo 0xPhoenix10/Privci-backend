@@ -100,7 +100,7 @@
                                 {{$first_breach_array['breach summary']}}
                                 <a href="{{$first_breach_array['reference']}}" target="_blank"
                                     class="breach-reference col m-0 p-0 breach-refer">
-                                    You can read more about the breach at {{$domain_detail->monitoring_domain}}
+                                    You can read more at ...
                                 </a>
                             </p>
                             <p class="col-11 m-0 breach-summary">
