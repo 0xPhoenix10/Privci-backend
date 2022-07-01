@@ -30,6 +30,8 @@
     } else {
     $breach_count = count($array);
     $first_breach_array = get_object_vars($array[0]);
+    $breach_summary = substr($first_breach_array['breach summary'], 0, 150);
+    $breach_summary .= '...';
     @endphp
     <div class="breach-content">
         <div class="search-result-info">
@@ -42,15 +44,26 @@
         </div>
         <div class="search-result-info">
             <h4 class="m-0 p-0 text-light">Summary:</h4>
-            <p class="col-9 m-0 breach-summary">{{$first_breach_array['breach summary']}}</p>
+            <p class="col-11 m-0 breach-summary-hidden">
+                {{$first_breach_array['breach summary']}}
+                <a href="{{$first_breach_array['reference']}}" target="_blank"
+                    class="breach-reference col m-0 p-0 breach-refer">
+                    You can read more about the breach at {{$domain_detail->monitoring_domain}}
+                </a>
+            </p>
+            <p class="col-11 m-0 breach-summary">
+                {{$breach_summary}}
+                <a href="#" class="read-more">read more</a>
+            </p>
+            <a></a>
         </div>
-        <div class="search-result-info">
+        <!-- <div class="search-result-info">
             <h4 class="m-0 text-light">Reference:</h4>
             <a href="{{$first_breach_array['reference']}}" target="_blank"
                 class="breach-reference col m-0 breach-refer">
                 {{$first_breach_array['reference']}}
             </a>
-        </div>
+        </div> -->
     </div>
 
     <div class="d-flex justify-content-end">

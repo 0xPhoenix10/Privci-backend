@@ -100,6 +100,7 @@ h6 {
 
 .medium-card {
     background-color: #212529;
+    min-height: 160px !important;
 }
 
 .medium-card .page-show {
@@ -212,7 +213,7 @@ h6 {
 }
 
 .no-breach {
-    padding: 20px 0px;
+    padding: 45px 0px;
     text-align: center;
     font-size: 20px;
 }
@@ -589,4 +590,17 @@ body
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.breach-summary-hidden {
+    display: none;
+}
+
+.read-more {
+    color: #04bd45 !important;
+    font-weight: 500 !important;
+}
+
+.read-more:hover {
+    color: #74c76f !important;
 }
