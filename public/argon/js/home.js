@@ -345,7 +345,8 @@ function get_by_domain(domain) {
     $.ajax({
         url: '/get_by_domain',
         data: {
-            domain: domain
+            domain: domain,
+            width: $('.breach-panel').width() / 1292.5 * 319
         },
         type: 'GET',
         dataType: 'json',
@@ -375,9 +376,16 @@ function breach_pagination(page) {
             $('.breach-date').text(resp.breach_info['breach date']);
             $('.breach-no-of-records').text(resp.breach_info['no of records']);
             
+            var domain = $('#selected_domain').val();
+            var total_width = $('.breach-panel').width() / 1292.5 * 319;;
+            var main_width = total_width - 49;
+            var length0 = resp.breach_info['breach summary'].length;
             var length1 = ('You can read more at ').length;
-            var length2 = resp.breach_info['reference'].length;
-            var length = 190 - length1 - length2;
+            var length2 = domain.length;
+            var limit = main_width - length2;
+
+            var length = (length0 > limit) ? limit : (total_width - length1 - length2);
+
             var breach_summary = resp.breach_info['breach summary'].substring(0, length);
             breach_summary += "... ";
             var html = breach_summary;
@@ -385,16 +393,16 @@ function breach_pagination(page) {
             if(resp.breach_info['breach summary'].length > length) {
                 html += '<a href="#" class="read-more">read more</a>';    
             } else {
-                html += '<a href="' + resp.breach_info['reference'] + '" target="_blank" class="breach-reference col m-0 p-0 breach-refer">You can read more at ' + $('#selected_domain').val() + '</a>';
+                html += '<a href="' + resp.breach_info['reference'] + '" target="_blank" class="breach-reference col m-0 p-0 breach-refer">You can read more at ' + domain + '</a>';
             }
 
             var more_html = resp.breach_info['breach summary'];
-            more_html += ' <a href="' + resp.breach_info['reference'] + '" target="_blank" class="breach-reference col m-0 p-0 breach-refer">You can read more at ' + $('#selected_domain').val() + '</a>';
+            more_html += ' <a href="' + resp.breach_info['reference'] + '" target="_blank" class="breach-reference col m-0 p-0 breach-refer">You can read more at ' + domain + '</a>';
             
             $('.breach-summary').html(html);
             $('.breach-summary-hidden').html(more_html);
-            $('.breach-reference').text(resp.breach_info['reference']);
-            $('.breach-reference').attr('href', resp.breach_info['reference']);
+            // $('.breach-reference').text(resp.breach_info['reference']);
+            // $('.breach-reference').attr('href', resp.breach_info['reference']);
 
             $('.breach-pagination-btn').each(function() {
                 $(this).removeClass('page-selected');

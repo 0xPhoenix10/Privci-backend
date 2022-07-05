@@ -82,9 +82,13 @@
                     } else {
                     $breach_count = count($array);
                     $first_breach_array = get_object_vars($array[0]);
+                    $length0 = strlen($first_breach_array['breach summary']);
                     $length1 = strlen('You can read more at ');
                     $length2 = strlen($domain_detail->monitoring_domain);
-                    $length = 190 - $length1 - $length2;
+
+                    $limit = $width['main'] - $length2;
+                    $length = ($length0 > $limit) ? $limit : ($width['total'] - $length1 - $length2);
+
                     $breach_summary = substr($first_breach_array['breach summary'], 0, $length);
                     $breach_summary .= '...';
                     @endphp

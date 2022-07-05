@@ -48,7 +48,10 @@ class HomeController extends Controller
             $domain_emails = explode(',', $domain_emails[0]->colleague_emails);
         }
 
-        return view('home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'selected'));
+        $width['total'] = 245;
+        $width['main'] = $width['total'] - 49;
+
+        return view('home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'selected', 'width'));
     }
 
     public function get_by_domain(Request $request) {
@@ -67,8 +70,10 @@ class HomeController extends Controller
         
         $data['selected'] = $domain;
         $request->session()->put('selected_domain', $domain);
+        $width['total'] = (int)$request->width;
+        $width['main'] = $width['total'] - 49;
 
-        $data['html'] = view('__home', compact('domains', 'domain_detail', 'domain_emails', 'type'))->render();
+        $data['html'] = view('__home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'width'))->render();
 
         return response()->json($data);
     }
@@ -212,7 +217,6 @@ class HomeController extends Controller
         $data['html'] = '';
         $emails = array_slice($emails, 30 * $request->page + 1, 30);
 
-        // var_dump($emails); die();
         $data['start'] = 30 * $request->page + 1;
         $data['end'] = 30 * $request->page + count($emails);
         
