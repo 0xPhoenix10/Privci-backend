@@ -48,8 +48,7 @@ class HomeController extends Controller
             $domain_emails = explode(',', $domain_emails[0]->colleague_emails);
         }
 
-        $width['total'] = 245;
-        $width['main'] = $width['total'] - 49;
+        $width = 180;
 
         return view('home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'selected', 'width'));
     }
@@ -70,8 +69,7 @@ class HomeController extends Controller
         
         $data['selected'] = $domain;
         $request->session()->put('selected_domain', $domain);
-        $width['total'] = (int)$request->width;
-        $width['main'] = $width['total'] - 49;
+        $width = (int)$request->width;
 
         $data['html'] = view('__home', compact('domains', 'domain_detail', 'domain_emails', 'type', 'width'))->render();
 

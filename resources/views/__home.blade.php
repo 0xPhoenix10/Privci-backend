@@ -30,15 +30,9 @@
     } else {
     $breach_count = count($array);
     $first_breach_array = get_object_vars($array[0]);
-    $length0 = strlen($first_breach_array['breach summary']);
-    $length1 = strlen('You can read more at ');
-    $length2 = strlen($domain_detail->monitoring_domain);
 
-    $limit = $width['main'] - $length2;
-    $length = ($length0 > $limit) ? $limit : ($width['total'] - $length1 - $length2);
-
-    $breach_summary = substr($first_breach_array['breach summary'], 0, $length);
-    $breach_summary .= '...';
+    $breach_summary = substr($first_breach_array['breach summary'], 0, $width);
+    $breach_summary .= (strlen($first_breach_array['breach summary']) > $width) ? '...' : '';
     @endphp
     <div class="breach-content">
         <div class="search-result-info">
@@ -53,20 +47,11 @@
             <h4 class="m-0 p-0 text-light">Summary:</h4>
             <p class="col-11 m-0 breach-summary-hidden">
                 {{$first_breach_array['breach summary']}}
-                <a href="{{$first_breach_array['reference']}}" target="_blank"
-                    class="breach-reference col m-0 p-0 breach-refer">
-                    You can read more at {{$domain_detail->monitoring_domain}}
-                </a>
             </p>
             <p class="col-11 m-0 breach-summary">
                 {{$breach_summary}}
-                @if(strlen($first_breach_array['breach summary']) > $length)
+                @if(strlen($first_breach_array['breach summary']) > $width)
                 <a href="#" class="read-more">read more</a>
-                @else
-                <a href="{{$first_breach_array['reference']}}" target="_blank"
-                    class="breach-reference col m-0 p-0 breach-refer">
-                    You can read more at {{$domain_detail->monitoring_domain}}
-                </a>
                 @endif
             </p>
         </div>
