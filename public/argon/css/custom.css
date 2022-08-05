@@ -118,6 +118,10 @@ h6 {
     font-size: 16px;
 }
 
+.breach-panel .breach-content {
+    min-height: 96px;
+}
+
 .breach-panel .medium-card p {
     line-height: 1.5rem;
 }
